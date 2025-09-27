@@ -1,0 +1,29 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{subfiles}
+\usepackage{csquotes}
+\geometry{margin=2.5cm}
+\usepackage{mathtools} % For underbracket
+% Om logische symbolen makkelijker te schrijven
+\newcommand{\impl}{\Rightarrow}
+\newcommand{\biimpl}{\Leftrightarrow}
+\newcommand{\xor}{\oplus}
+
+\title{Discrete Wiskunde - Oefeningen en Oplossingen}
+\author{Bart Peiren}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% Hoofdstukken
+\subfile{hoofdstukken/1-Inleidende_begrippen}
+
+\end{document}

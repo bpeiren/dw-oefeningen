@@ -1,0 +1,517 @@
+\documentclass[../dw-oefeningen.tex]{subfiles}
+\begin{document}
+\chapter{Inleidende begrippen}
+
+\begin{enumerate}
+  % Oefening 1
+  \item \(p(x) = ``x \text{ is deelbaar door 10}''\) en \(q(x) = ``x \text{ is deelbaar door 2}''\)
+    \begin{enumerate}[label=\alph*)]
+        \item Met symbolen (voor \(x\in\mathbb{Z}\)):
+            \begin{itemize}
+        \item \(p(x): x \mod 10 = 0\) (er bestaat \(k\in\mathbb{Z}\) zodat \(x=10k\))
+        \item \(q(x): x \mod 2 = 0\) (er bestaat \(m\in\mathbb{Z}\) zodat \(x=2m\))
+            \end{itemize}
+        \item Negatie: \(\neg p(x)\): \(x \mod 10 \ne 0\) ("\(x\) is niet deelbaar door 10").
+        \item Conjunctie: \(p(x) \land q(x)\): \(x \mod 10 = 0 \land x \mod 2 = 0\). Dit reduceert tot \(x \mod 10 = 0\) omdat \(x \mod 10 = 0 \impl x \mod 2 = 0\).
+        \item Implicatie \(q(x)\impl p(x)\): \(x \mod 2 = 0 \Rightarrow x \mod 10 = 0\). \\
+                Contrapositie: \(x \mod 10 \ne 0 \Rightarrow x \mod 2 \ne 0\).
+        \item Equivalentie \(p(x)\biimpl q(x)\): \(x \mod 10 = 0 \Leftrightarrow x \mod 2 = 0\).
+    \end{enumerate}
+    Waarheidswaarden:
+    \begin{itemize}
+        \item \(q(x)\impl p(x)\) is \textbf{onwaar}: neem \(x=2\) dan \(2 \mod 2 = 0\) maar \(2 \mod 10 \ne 0\).
+        \item Contrapositie \(\neg p(x)\impl \neg q(x)\) is dus ook onwaar: neem \(x=2\) dan antecedent \(2 \mod 10 \ne 0\) waar, consequent \(2 \mod 2 \ne 0\) onwaar.
+        \item \(p(x)\land q(x)\) is waar precies voor \(x \mod 10 = 0\) (alle veelvouden van 10).
+        \item Negatie \(\neg p(x)\) is waar voor alle \(x\) met \(x \mod 10 \ne 0\).
+        \item Equivalentie \(p(x)\biimpl q(x)\) is onwaar: \(x=2\) is tegenvoorbeeld (rechts waar, links onwaar); ook \(x=10\) maakt beide waar maar één voorbeeld volstaat om onwaarheid aan te tonen.
+    \end{itemize}
+
+  % Oefening 2
+  \item Waarheidstafel voor de exclusieve of (Xor) \(p\xor q\):
+  \[
+  \begin{array}{c c | c}
+    p & q & p\oplus q\\\hline
+    T & T & F\\
+    T & F & T\\
+    F & T & T\\
+    F & F & F
+  \end{array}
+  \]
+  Een equivalente uitdrukking: \((p\lor q) \land \neg(p\land q)\) of ook \((p\lor q) \land (\neg p \lor \neg q)\) of in som-van-producten: \((p\land \neg q) \lor (\neg p \land q)\).
+
+  % Oefening 3
+  \item Waarheidstabellen:
+  \begin{enumerate}[label=\roman*)]
+  \item \((p \impl q) \impl (q \impl p)\):
+     \[
+     \begin{array}{c c | c c | c}
+       p & q & p\impl q & q\impl p & (p\impl q)\impl(q\impl p) \\\hline
+       T & T & T & T & T \\
+       T & F & F & T & T \\
+       F & T & T & F & F \\
+       F & F & T & T & T \\
+     \end{array}
+     \]
+
+  \item \(q \biimpl (\neg p \lor \neg q)\):
+     \[
+     \begin{array}{c c | c c | c}
+       p & q & \neg p \lor \neg q & q\biimpl(\neg p \lor \neg q) \\\hline
+       T & T & F & F \\
+       T & F & T & F \\
+       F & T & T & T \\
+       F & F & T & F \\
+     \end{array}
+     \]
+
+  \item \([(p\impl q) \land (q\impl r)] \impl (p \impl r)\) (transitiviteit van implicatie):
+     \[
+     \begin{array}{c c c | c c | c | c | c}
+       p & q & r & p\impl q & q\impl r & (p\impl q)\land(q\impl r) & p\impl r & \text{geheel} \\\hline
+       T & T & T & T & T & T & T & T \\
+       T & T & F & T & F & F & F & T \\
+       T & F & T & F & T & F & T & T \\
+       T & F & F & F & T & F & F & T \\
+       F & T & T & T & T & T & T & T \\
+       F & T & F & T & F & F & T & T \\
+       F & F & T & T & T & T & T & T \\
+       F & F & F & T & T & T & T & T \\
+     \end{array}
+     \]
+     Dit is een tautologie.
+  \end{enumerate}
+  % Oefening 4
+  \item Toon aan dat \(\neg(p \lor q)\) en \(\neg p \land \neg q\) logisch equivalent zijn. Wat kan je zeggen over \(\neg(p \land q)\) en \(\neg p \lor \neg q\)?
+  \begin{enumerate}[label=\alph*)]
+    \item Waarheidstabel voor \(\neg(p \lor q)\) en \(\neg p \land \neg q\):
+    \[
+    \begin{array}{c c | c | c c | c}
+      p & q & p \lor q & \neg(p \lor q) & \neg p \land \neg q & gelijk? \\\hline
+      T & T & T & F & F & T \\
+      T & F & T & F & F & T \\
+      F & T & T & F & F & T \\
+      F & F & F & T & T & T \\
+    \end{array}
+    \]
+    De kolom \(\neg(p \lor q)\) is identiek aan \(\neg p \land \neg q\), dus ze zijn logisch equivalent (De Morgan).
+    
+    \item Waarheidstabel voor \(\neg(p \land q)\) en \(\neg p \lor \neg q\):
+    \[
+    \begin{array}{c c | c | c c | c}
+      p & q & p \land q & \neg(p \land q) & \neg p \lor \neg q & gelijk? \\\hline
+      T & T & T & F & F & T \\
+      T & F & F & T & T & T \\
+      F & T & F & T & T & T \\
+      F & F & F & T & T & T \\
+    \end{array}
+    \]
+    Ook hier zijn de kolommen \(\neg(p \land q)\) en \(\neg p \lor \neg q\) identiek (tweede De Morgan).
+  \end{enumerate}
+
+  % Oefening 5
+  \item Toon aan dat \(p \biimpl q\) en \((p \impl q) \land (q \impl p)\) logisch equivalent zijn.
+    \[
+    \begin{array}{c c | c | c c | c}
+        p & q & p \biimpl q & p \impl q & q \impl p & (p \impl q) \land (q \impl p) \\\hline
+        T & T & T & T & T & T \\
+        T & F & F & F & T & F \\
+        F & T & F & T & F & F \\
+        F & F & T & T & T & T \\
+    \end{array}
+    \]
+    De kolom \(p \biimpl q\) is identiek aan \((p \impl q) \land (q \impl p)\), dus ze zijn logisch equivalent.
+
+  % Oefening 6
+  \item Elke uitspraak in een waarheidstafel kan waar of onwaar zijn. Het aantal rijen van een waarheidstafel wordt bepaald door het aantal mogelijke combinaties 
+        van de samenstellende uitspraken.
+
+  % Oefening 7
+  \item Schrijf de waarheidstafels op voor volgende logische uitspraken en leid er een equivalente vorm voor de uitspraak uit af:
+  \begin{enumerate}[label=\alph*)]
+    \item \(\neg(\neg p)\):
+    \[
+    \begin{array}{c | c | c}
+       &  & \text{equiv} \\
+      p & \neg(\neg p) & \mathbf{p} \\\hline
+      T & T & T \\
+      F & F & F \\
+    \end{array}
+    \]
+
+    \item \(\neg(p \land q)\):
+    \[
+    \begin{array}{c c | c | c | c}
+       &  &  &  & \text{equiv} \\
+      p & q & p \land q & \neg(p \land q) & \mathbf{\neg p \lor \neg q} \\\hline
+      T & T & T & F & F \\
+      T & F & F & T & T \\
+      F & T & F & T & T \\
+      F & F & F & T & T \\
+    \end{array}
+    \]
+
+    \item \(\neg(p \lor q)\):
+    \[
+    \begin{array}{c c | c | c | c}
+       &  &  &  & \text{equiv} \\
+      p & q & p \lor q & \neg(p \lor q) & \mathbf{\neg p \land \neg q} \\\hline
+      T & T & T & F & F \\
+      T & F & T & F & F \\
+      F & T & T & F & F \\
+      F & F & F & T & T \\
+    \end{array}
+    \]
+
+    \item \(\neg(p \Leftarrow q)\):
+    \[
+    \begin{array}{c c | c | c | c}
+       &  &  &  & \text{equiv} \\
+      p & q & p \Leftarrow q & \neg(p \Leftarrow q) & \mathbf{q \land \neg p} \\\hline
+      T & T & T & F & F \\
+      T & F & T & F & F \\
+      F & T & F & T & T \\
+      F & F & T & F & F \\
+    \end{array}
+    \]
+
+    \item \(\neg(p \Leftrightarrow q)\):
+    \[
+    \begin{array}{c c | c | c | c}
+       &  &  &  & \text{equiv} \\
+      p & q & p \Leftrightarrow q & \neg(p \Leftrightarrow q) & \mathbf{(p \land \neg q) \lor (\neg p \land q)} \\\hline
+      T & T & T & F & F \\
+      T & F & F & T & T \\
+      F & T & F & T & T \\
+      F & F & T & F & F \\
+    \end{array}
+    \]
+  \end{enumerate}
+
+  % Oefening 8
+  \item 
+    \begin{itemize}
+      \item \(\neg(p \land (\neg p))\): \\
+            een propositie kan niet zowel waar als onwaar zijn. De negatie ervan is dus altijd waar.
+      \item \(p \lor (\neg p)\): \\
+            een propositie is altijd ofwel waar ofwel onwaar.
+      \item \((p \land p) \Leftrightarrow p\): \\
+            \((T \land T) \Leftrightarrow T\) of \((F \land F) \Leftrightarrow F\), dus altijd waar.
+      \item \((p \land q) \Leftrightarrow (q \land p)\): \\
+            als \(p\) en \(q\) beide waar zijn, dan zijn \(q\) en \(p\) ook beide waar.
+      \item \((p \lor (q \lor r)) \Leftrightarrow ((p \lor q) \lor r)\): \\
+            als één van de proposities waar is, dan is deze waar ongeacht de haakjes
+      \item \(\neg(\neg p) \Leftrightarrow p\): \\
+            als een propositie waar is, is de negatie onwaar en de negatie daarvan terug waar.
+      \item \(p \Rightarrow (q \Rightarrow p)\): 
+            \[
+            \begin{array}{c c | c | c}
+              p & q & q \Rightarrow p & p \Rightarrow (q \Rightarrow p) \\\hline
+              T & T & T & T \\
+              T & F & T & T \\
+              F & T & F & T \\
+              F & F & T & T \\
+            \end{array}
+            \]
+            Een propositie impliceert zichzelf.
+      \item \(\neg p \Rightarrow (p \Rightarrow q)\): 
+            \[
+            \begin{array}{c c | c | c | c}
+              p & q & \neg p & p \Rightarrow q & \neg p \Rightarrow (p \Rightarrow q) \\\hline
+              T & T & F & T & T \\
+              T & F & F & F & T \\
+              F & T & T & T & T \\
+              F & F & T & T & T \\
+            \end{array}
+            \]
+            ???
+      \item \((p \Rightarrow q) \lor (q \Rightarrow p)\): 
+            \[
+            \begin{array}{c c | c | c | c}
+              p & q & p \Rightarrow q & q \Rightarrow p & (p \Rightarrow q) \lor (q \Rightarrow p) \\\hline
+              T & T & T & T & T \\
+              T & F & F & T & T \\
+              F & T & T & F & T \\
+              F & F & T & T & T \\
+            \end{array}
+            \]
+            ???
+    \end{itemize}
+
+  % Oefening 9
+  \item 
+      \[
+      \begin{array}{c c | c | c | c | c}
+        p & q & q \Rightarrow p & p \Rightarrow (q \Rightarrow p) & p \Rightarrow q & (p \Rightarrow q) \Rightarrow p \\\hline
+        T & T & T & T & T & T \\
+        T & F & T & T & F & T \\
+        F & T & F & T & T & F \\
+        F & F & T & T & T & F \\
+         &  & & \underbracket{\quad\quad} &  & \underbracket{\quad\quad}
+      \end{array}
+      \]
+      Deze zijn dus niet equivalent.
+
+  % Oefening 10
+  \item Noteer volgende oefeningen met behulp van kwantoren. Bepaal eventueel of de bewering waar of vals is. Schrijf de negatie van de bewering op met kwantoren en met woorden.
+  \begin{enumerate}[label=\alph*)]
+    \item \enquote{Alle mensen zijn slim.}: \\
+          \(\forall \text{mens}: \text{mens is slim}\) \\
+          Jammer genoeg is niet niet waar. \\
+          Negatie: \(\exists \text{mens}: \neg(\text{mens is slim})\)
+    \item \enquote{Er zijn mensen die groot zijn.}: \\
+          \(\exists \text{mens}: \text{mens is groot}\) \\
+          Waar. \\
+          Negatie : \(\not\exists \text{mens}: \text{mens is groot}\)
+    \item \enquote{Er zijn mensen die groot zijn en lang haar hebben.} \\
+          \(\exists \text{mens}: (\text{mens is groot} \land \text{mens heeft lang haar})\) \\
+          Waar \\
+          Negatie: \(\not\exists \text{mens}: (\text{mens is groot} \land \text{mens heeft lang haar})\) \\
+          of: \(\forall \text{mens}: \neg(\text{mens is groot}) \lor \neg(\text{mens heeft lang haar})\)
+    \item \enquote{Niet alle mensen hebben kort haar.} \\
+          \(\exists \text{mens}: \neg(\text{mens heeft kort haar})\) \\
+          Waar \\
+          Negatie: \(\forall \text{mens}: \text{mens heeft kort haar}\)
+    \item \enquote{Alle wegen leiden naar Rome.} \\
+          \(\forall \text{weg}: \text{weg leidt naar Rome}\) \\
+          Onwaar \\
+          Negatie: \(\exists \text{weg}: \neg(\text{weg leidt naar Rome})\)
+    \item \enquote{Voor elke mens geldt: als hij groot is, dan is hij niet klein.} \\
+          \(\forall \text{mens}: (\text{mens is groot} \implies \neg(\text{mens is klein}))\) \\
+          Waar \\
+          Negatie: \(\exists \text{mens}: (\text{mens is groot} \implies \text{mens is klein})\)
+    \item \enquote{Een geheel getal is positief.} \\
+          \(\forall \text{geheel getal}: (\text{geheel getal is positief})\) \\
+          Onwaar \\
+          Negatie: \(\exists \text{geheel getal}: \neg(\text{geheel getal is positief})\)
+    \item \enquote{Elk natuurlijk getal is even.} \\
+          \(\forall \text{natuurlijk getal}: (\text{natuurlijk getal is even})\) \\
+          Onwaar \\
+          Negatie: \(\exists \text{natuurlijk getal}: \neg(\text{natuurlijk getal is even})\)
+    \item \enquote{Sommige reële getallen zijn positief.} \\
+          \(\exists \text{reëel getal}: (\text{reëel getal is positief})\) \\
+          Waar \\
+          Negatie: \(\not\exists \text{reëel getal}: (\text{reëel getal is positief})\)
+  \end{enumerate}
+
+  % Oefening 11
+  \item Schrijf alle deelverzamelingen van \(\{1,2,3\}\).
+  \[
+    \emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}
+  \]
+  
+  % Oefening 12
+  \item Hoeveel deelverzamelingen heeft een verzameling met 2 elementen? Met 3 elementen? Met \(n\) elementen?
+    \begin{itemize}
+      \item 2 elementen: \(2^2 = 4\) deelverzamelingen
+      \item 3 elementen: \(2^3 = 8\) deelverzamelingen
+      \item \(n\) elementen: \(2^n\) deelverzamelingen
+    \end{itemize}
+
+  % Oefening 13
+  \item Wanneer behoort een element niet tot \(A \cap B\)? Vul aan: \(x \not\in A \cap B \Leftrightarrow\)
+  \\
+  Wanneer deze niet tot \(A\) of niet tot \(B\) behoort.
+  \[
+    x \not\in A \cap B \Leftrightarrow x \not\in A \lor x \not\in B
+  \]
+
+  % Oefening 14
+  \item Analoog: \(x \not\in A \cup B \Leftrightarrow x \not\in A \land x \not\in B\)
+
+  % Oefening 15
+  \item Analoog: \(x \not\in A \setminus B \Leftrightarrow x \not\in A \lor x \in B\)
+
+  % Oefening 16
+  \item Toon aan dat
+    \begin{itemize}
+      \item \(B \supset A \Leftrightarrow A \cup B = B \Leftrightarrow A \cap B = A\)
+      \item \(A \cup (A \cap B) = A\)
+      \item \(A \cap (A \cup B) = A\)
+    \end{itemize}
+    Ik snap deze drie stellingen, maar hoe bewijs je ze effectief? Ik zou daar tekeningen voor maken,
+    maar dat lijkt mij niet de bedoeling.
+    
+  % Oefening 17
+  \item Wanneer is \(x \not\in \bigcup_{i \in I} A_i\)? \\
+        Wanneer \(x \not\in A\) of de index van \(x\) niet in \(I\) zit.
+
+  % Oefening 18
+  \item Geef de betekenis in woorden van de volgende uitspraken. Zeg of ze waar of onwaar zijn. Geef de negatie in symbolen en woorden.
+  \begin{itemize}
+    \item \(\forall x \in \mathbb{Z}, \exists y \in \mathbb{Z} : x < y\)
+          \begin{itemize}
+            \item Betekenis: voor elk geheel getal \(x\) bestaat er een groter geheel getal \(y\).
+            \item Waar.
+            \item Negatie: \(\exists x \in \mathbb{Z}, \forall y \in \mathbb{Z} : x \geq y\)
+          \end{itemize}
+    \item \(\exists x \in \mathbb{Z}, \exists y \in \mathbb{N} : x > y\)
+          \begin{itemize}
+            \item Betekenis: er bestaat een geheel getal \(x\) dat groter is dan een natuurlijk getal \(y\).
+            \item Waar.
+            \item Negatie: \(\forall x \in \mathbb{Z}, \forall y \in \mathbb{N} : x \le y\)
+          \end{itemize}
+    \item \(\exists x \in \mathbb{Z}, \forall y \in \mathbb{Z} : x < y\)
+          \begin{itemize}
+            \item Betekenis: er bestaat een geheel getal \(x\) dat kleiner is dan elk geheel getal \(y\).
+            \item Onwaar, dan zou dit getal ook kleiner dan zichzelf moeten zijn.
+            \item Negatie: \(\forall x \in \mathbb{Z}, \exists y \in \mathbb{Z} : x \ge y\)
+          \end{itemize}
+    \item \(\forall \varepsilon > 0, \exists \delta > 0, \forall x \in \mathbb{R} : |x-a| < \delta \Rightarrow |f(x) - f(a)| < \varepsilon\)
+          \begin{itemize}
+            \item Betekenis: er bestaan een aantal getallen waarvoor geldt dat als het verschil 
+                  tussen \(x\) en \(a\) kleiner is dan \(\delta\), het verschil tussen \(f(x)\) en 
+                  \(f(a)\) kleiner is dan \(\varepsilon\).
+            \item Waar, dit is de definitie van een limiet.
+            \item Negatie: \(\exists \varepsilon > 0, \forall \delta > 0, \exists x \in \mathbb{R} : |x-a| < \delta \Rightarrow |f(x) - f(a)| \geq \varepsilon\)
+          \end{itemize}
+  \end{itemize}
+
+  % Oefening 19
+  \item Zij \(A = \{2,3\}\), \(B = \{4,5,6\}\) en \(C = \{a,b,c,d\}\). Geef \(A \times B\), \(B \times A\), \(A \times C\), \(C \times B\), \(A^2\), \(C \times \{a\}\).
+  \begin{itemize}
+    \item \(A \times B = \{(2,4), (2,5), (2,6), (3,4), (3,5), (3,6)\}\)
+    \item \(B \times A = \{(4,2), (4,3), (5,2), (5,3), (6,2), (6,3)\}\)
+    \item \(A \times C = \{(2,a), (2,b), (2,c), (2,d), (3,a), (3,b), (3,c), (3,d)\}\)
+    \item \(C \times B = \{(a,4), (a,5), (a,6), (b,4), (b,5), (b,6), (c,4), (c,5), (c,6), (d,4), (d,5), (d,6)\}\)
+    \item \(A^2 = A \times A = \{(2,2), (2,3), (3,2), (3,3)\}\)
+    \item \(C \times \{a\} = \{(a,a), (b,a), (c,a), (d,a)\}\)
+  \end{itemize}
+
+  % Oefening 20
+  \item Zij \(A = \{1,2,3,4\}\) en beschouw de relatie \(\mathcal{R}\): "is kleiner dan of gelijk aan" op \(A\). Geef de elementen van \(\mathcal{R}\). Geef de inverse relatie van \(\mathcal{R}\).
+  \begin{itemize}
+    \item \( \mathcal{R} = \{(1,1), (1,2), (1,3), (1,4), (2,2), (2,3), (2,4), (3,3), (3,4), (4,4)\} \)
+    \item \(\mathcal{R}^{-1}\) bevat alle paren \((b,a)\) waarvoor \(a \leq b\), dus \((b,a)\) met \(b \geq a\): \\
+    \( \mathcal{R}^{-1} = \{(1,1), (2,1), (2,2), (3,1), (3,2), (3,3), (4,1), (4,2), (4,3), (4,4)\} \)
+  \end{itemize}
+
+  % Oefening 21
+  \item Zij \(f : A \rightarrow B\) een functie en \(S_1, S_2 \subset A\). Bewijs dat
+  \begin{enumerate}[label=\alph*)]
+    \item \(f(S_1 \cup S_2) = f(S_1) \cup f(S_2)\)
+    \item \(f(S_1 \cap S_2) \subset f(S_1) \cap f(S_2)\)
+  \end{enumerate}
+  Zoek voorbeelden die dit illustreren.
+
+  % Oefening 22
+  \item Zij \(f : A \rightarrow B\) een functie die niet noodzakelijk inverteerbaar is, en \(S \subset A\) en \(T, T_1, T_2 \subset B\). Bewijs dat
+  \begin{enumerate}[label=\alph*)]
+    \item \(f^{-1}(T_1 \cup T_2) = f^{-1}(T_1) \cup f^{-1}(T_2)\)
+    \item \(f^{-1}(T_1 \cap T_2) = f^{-1}(T_1) \cap f^{-1}(T_2)\)
+    \item \(f(f^{-1}(T)) \subset T\)
+    \item \(f^{-1}(f(S)) \supset S\)
+  \end{enumerate}
+  Zoek voorbeelden die dit illustreren.
+
+  % Oefening 23
+  \item Toon aan: \(f : A \rightarrow B\) is injectief \(\Leftrightarrow \forall b \in B : f^{-1}(b)\) bevat hoogstens één element.
+
+  % Oefening 24
+  \item
+  \begin{enumerate}[label=\alph*)]
+    \item Zij \(f : A \rightarrow B\). Toon aan dat \(f \circ 1_A = f = 1_B \circ f\).
+    \item Toon aan dat de samenstelling van 2 injecties opnieuw een injectie is.
+    \item Toon aan dat de samenstelling van 2 surjecties opnieuw een surjectie is.
+  \end{enumerate}
+
+    % Oefening 25
+    \item Zij \(f(x) = \sqrt{x}\), \(g(x) = x/4\) en \(h(x) = 4x - 8\). Zoek het functievoorschrift voor:
+    \begin{enumerate}[label=\alph*)]
+      \item \(h \circ g \circ f = 4 \left(\frac{\sqrt{x}}{4}\right) - 8 = \sqrt{x} - 8\)
+      \item \(h \circ f \circ g = 4 \left(\sqrt{\frac{x}{4}}\right) - 8 = 2 \sqrt{x} - 8\)
+      \item \(g \circ h \circ f = \frac{4 \sqrt{x} - 8}{4} = \sqrt{x} - 2\)
+      \item \(g \circ f \circ h = \frac{\sqrt{4x-8}}{4} = \frac{\sqrt{4(x-2)}}{4} = \frac{\sqrt{x-2}}{2}\)
+      \item \(f \circ g \circ h = \sqrt{\frac{4x-8}{4}} = \sqrt{x-2}\)
+      \item \(f \circ h \circ g = \sqrt{4\frac{x}{4}-8} = \sqrt{x-8}\)
+    \end{enumerate}
+
+    % Oefening 26
+    \item Zij \(f(x) = x-3\), \(g(x) = \sqrt{x}\), \(h(x) = x^3\) en \(j(x) = 2x\). Schrijf de volgende functies als een samenstelling van de bovenstaande:
+    \begin{enumerate}[label=\alph*)]
+      \item \(\sqrt{x-3} = g \circ f\)
+      \item \(2\sqrt{x} = j \circ g\)
+      \item \(x^{1/4} = g \circ g\)
+      \item \(4x = j \circ j\)
+      \item \(\sqrt{(x-3)^3} = g \circ h \circ j\)
+      \item \((2x-6)^3 = h \circ j \circ f\)
+      \item \(2x-3 = f \circ j\)
+      \item \(x^{3/2} = g \circ h = h \circ g\)
+      \item \(x^9 = h \circ h\)
+      \item \(x-6 = f \circ f\)
+      \item \(2\sqrt{x-3} = j \circ g \circ f\)
+      \item \(\sqrt{x^3-3} = g \circ f \circ h\)
+    \end{enumerate}
+
+    % Oefening 27
+    \item Toon aan voor inverteerbare functies \(f\) en \(g\):
+    \begin{enumerate}[label=\alph*)]
+      \item \((f^{-1})^{-1} = f\)
+      \item \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\)
+    \end{enumerate}
+
+    % Oefening 28
+    \item Onderzoek of volgende functies inverteerbaar zijn. Zo ja, bepaal de inverse functies. Zo nee, definieer een bijectie \(\hat{f}\) met hetzelfde voorschrift als \(f\) en bepaal \((\hat{f})^{-1}\).
+    \begin{enumerate}[label=\alph*)]
+      \item \(f : \mathbb{R} \to \mathbb{R} : x \mapsto |x|\): \\
+            \(\hat{f} : \mathbb{R}^+ \to \mathbb{R}^+ : x \mapsto |x|\) \\
+            \(\hat{f}^{-1} : \mathbb{R}^+ \to \mathbb{R}^+ : x \mapsto x\)
+      \item \(f : \mathbb{R} \to \mathbb{R} : x \mapsto x+1\): \\
+            \(f^{-1} : \mathbb{R} \to \mathbb{R} : x \mapsto x - 1\)
+      \item \(f : \mathbb{R} \to \mathbb{R} : x \mapsto 2x+3\): \\
+            \(f^{-1} : \mathbb{R} \to \mathbb{R} : x \mapsto \frac{x-3}{2}\)
+      \item \(f : \mathbb{R}^+ \to \mathbb{R}^+ : x \mapsto \sqrt{x}\): \\
+            \(f^{-1} : \mathbb{R}^+ \to \mathbb{R}^+ : x \mapsto x^2\)
+      \item \(f : \mathbb{R} \to \mathbb{R} : x \mapsto \sqrt[3]{2x}+2\): \\
+            \(f^{-1} : \mathbb{R}^+ \to \mathbb{R}^+ : x \mapsto \frac{(x-2)^3}{2}\)
+      \item \(f : \mathbb{R} \to \mathbb{R} : x \mapsto 1\): \\
+            \(\hat{f} : {1} \to \mathbb{R} : x \mapsto 1\) \\
+            \(\hat{f}^{-1} : {1} \to {1} : x \mapsto x\)
+      \item \(f : \mathbb{R}_0 \to \mathbb{R} : x \mapsto \frac{2x-3}{x}\): \\
+            \(f^{-1} : \mathbb{R}^+ \to \mathbb{R}^+ : x \mapsto - \frac{3}{y - 2} = \frac{3}{2-y}\)
+      \item \(f : \mathbb{R} \to \mathbb{R} : x \mapsto \sin x\): \\
+            \(\hat{f} : [-\frac{\pi}{2},\frac{\pi}{2}] \to [-1,1] : x \mapsto \sin x\) \\
+            \(\hat{f}^{-1} : [-1,1] \to [-\frac{\pi}{2},\frac{\pi}{2}] : x \mapsto \arcsin x\)
+    \end{enumerate}
+
+    % Oefening 29
+    \item Zij \(h : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z} : h(x,y) = 2x+3y\). Bepaal het beeld van \(h\). Is \(h\) injectief? Surjectief?
+          \begin{itemize}
+            \item Beeld: \(\mathbb{Z}\), voor elke \(x, y \in \mathbb{Z}\) bestaat er een \(z \in \mathbb{Z}\)
+            \item Niet injectief, want meerdere combinaties van \(x\) en \(y\) kunnen dezelfde \(z\) opleveren.
+            \item Wel surjectief, want voor elke \(z \in \mathbb{Z}\) bestaat er een \(x, y \in \mathbb{Z}\) zodat \(z = 2x+3y\).
+          \end{itemize}
+
+    % Oefening 30
+    \item Bewijs: \(f(S_1 \cap S_2) = f(S_1) \cap f(S_2)\) als \(f\) injectief is (zie oef. 21). Geef een voorbeeld van een functie waarbij \(f(S_1 \cap S_2) \neq f(S_1) \cap f(S_2)\).
+
+    % Oefening 31
+    \item Bepaal of volgende functies injectief zijn. Geef hun beeld.
+    \begin{enumerate}[label=\alph*)]
+      \item \(f : \mathbb{Z} \to \mathbb{Z} : x \mapsto 2x+1\)
+            \begin{itemize}
+              \item Injectief: er is hoogstens 1 getal \(x\) voor elk \(z \in \mathbb{Z}\) zodat \(z = 2x+1\)
+              \item Beeld: \{z | z is een oneven geheel getal\}
+            \end{itemize}
+      \item \(f : \mathbb{Q} \to \mathbb{Q} : x \mapsto 2x+1\)
+            \begin{itemize}
+              \item Injectief: er is hoogstens 1 getal \(x\) voor elk \(z \in \mathbb{Q}\) zodat \(z = 2x+1\)
+              \item Beeld: \{z | z is een oneven rationaal getal\}
+            \end{itemize}
+      \item \(f : \mathbb{Z} \to \mathbb{Z} : x \mapsto x^3-x\)
+            \begin{itemize}
+              \item Injectief: voor elke \(z \in \mathbb{Z}\) is er precies één \(x \in \mathbb{Z}\) zodat \(z = x^3 - x\)
+              \item Beeld: \{z | z is een geheel getal met \(z = x^3 - x\)\}
+            \end{itemize}
+      \item \(f : \mathbb{R} \to \mathbb{R} : x \mapsto e^x\)
+            \begin{itemize}
+              \item Injectief: voor elke \(z \in \mathbb{R}\) is er precies één \(x \in \mathbb{R}\) zodat \(z = e^x\)
+              \item Beeld: \{z | z is een macht van \(e\)\}
+            \end{itemize}
+      \item \(f : [-\frac{\pi}{2},\frac{\pi}{2}] \to \mathbb{R} : x \mapsto \sin x\)
+            \begin{itemize}
+              \item Injectief: voor elke \(z \in [-1,1]\) is er precies één \(x \in [-\frac{\pi}{2},\frac{\pi}{2}]\) zodat \(z = \sin x\)
+              \item Beeld: [-1,1]
+            \end{itemize}
+    \end{enumerate}
+\end{enumerate}
+\end{document}
