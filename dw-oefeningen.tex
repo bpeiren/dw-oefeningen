@@ -3,13 +3,21 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{cancel}
+\usepackage{siunitx}
 \usepackage{enumitem}
 \usepackage{geometry}
 \usepackage{hyperref}
-\usepackage{subfiles}
 \usepackage{csquotes}
 \geometry{margin=2.5cm}
 \usepackage{mathtools} % For underbracket
+\usepackage{needspace}
+\usepackage[most]{tcolorbox}
+\tcbset{colframe=blue!50!black, colback=blue!5, coltitle=white, fonttitle=\bfseries}
+
+
+\usepackage{subfiles}
+
 % Om logische symbolen makkelijker te schrijven
 \newcommand{\impl}{\Rightarrow}
 \newcommand{\biimpl}{\Leftrightarrow}
@@ -25,5 +33,6 @@
 
 % Hoofdstukken
 \subfile{hoofdstukken/1-Inleidende_begrippen}
+\subfile{hoofdstukken/2-Eenvoudige_principes_van_discrete_wiskunde}
 
 \end{document}

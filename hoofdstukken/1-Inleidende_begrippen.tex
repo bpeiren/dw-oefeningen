@@ -322,14 +322,81 @@
   \item Analoog: \(x \not\in A \setminus B \Leftrightarrow x \not\in A \lor x \in B\)
 
   % Oefening 16
+  \needspace{5\baselineskip}
   \item Toon aan dat
     \begin{itemize}
-      \item \(B \supset A \Leftrightarrow A \cup B = B \Leftrightarrow A \cap B = A\)
+      \item \(A \subset B \Leftrightarrow A \cup B = B \iff A \cap B = A\)
+            \begin{itemize}
+              \item \(A \subset B \iff A \cup B = B\)
+                    \begin{itemize}
+                      \item \((\Rightarrow)\) Stel \(A \subset B\). Te bewijzen: \(A \cup B = B\), ofwel \(x \in A \cup B \iff x \in B\).
+                            \begin{itemize}
+                              \item \((\Leftarrow)\) \(x \in B \implies x \in A \cup B\). (definitie van unie)
+                              \item \((\Rightarrow)\) Stel \(x \in A \cup B\). Te bewijzen: \(x \in B\).
+                                    \begin{align*}
+                                      x \in A \cup B &\iff x \in A \lor x \in B \\
+                                                    &\iff x \in B \lor x \in B \quad (\text{want } A \subset B \Rightarrow x \in A \implies x \in B) \\
+                                                    &\iff x \in B
+                                    \end{align*}
+                            \end{itemize}
+                      \item \((\Leftarrow)\) Stel \(A \cup B = B\). Te bewijzen: \(A \subset B\), ofwel \(x \in A \implies x \in B\).
+                            \begin{align*}
+                              x \in A &\implies x \in A \cup B \\
+                                      &\implies x \in B
+                            \end{align*}
+                    \end{itemize}
+              \item \(A \cup B = B \iff A \cap B = A\)
+                    \begin{itemize}
+                      \item \((\Rightarrow)\) Stel \(A \cup B = B\). Te bewijzen: \(A \cap B = A\), ofwel \(x \in A \cap B \iff x \in A\).
+                            \begin{align*}
+                              x \in A \cap B &\implies x \in A \land x \in B \\
+                                             &\implies x \in A \land (x \in A \cup B) \\
+                                             &\implies x \in A \land (x \in A \lor x \in B) \\
+                                             &\implies x \in A
+                            \end{align*}
+                      \item \((\Leftarrow)\) Stel \(A \cap B = A\). Te bewijzen: \(A \cup B = B\), ofwel \(x \in A \cup B \iff x \in B\).
+                            \begin{align*}
+                              x \in A \cup B &\implies x \in A \lor x \in B \\
+                                             &\implies (x \in A \cap B) \lor x \in B \\
+                                             &\implies (x \in A \land x \in B) \lor x \in B \\
+                                             &\implies x \in B \\
+                            \end{align*}
+                    \end{itemize}
+            \end{itemize}
+
       \item \(A \cup (A \cap B) = A\)
+            \begin{itemize}
+              \item Te bewijzen: \(x \in A \cup (A \cap B) \iff x \in A\)
+                    \begin{itemize}
+                      \item \((\Leftarrow)\) \(x \in A \implies x \in A \cup (A \cap B)\) (definitie van unie)
+                      \item \((\Rightarrow)\) \(x \in A \cup (A \cap B) \implies x \in A\)
+                            \begin{align*}
+                              x \in A \cup (A \cap B) &\iff x \in A \lor x \in (A \cap B) \\
+                                                      &\iff x \in A \lor (x \in A \land x \in B) \\
+                                                      &\iff x \in A
+                            \end{align*}
+                    \end{itemize}
+            \end{itemize}
+
       \item \(A \cap (A \cup B) = A\)
+            \begin{itemize}
+              \item Te bewijzen: \(x \in A \cap (A \cup B) \iff x \in A\)
+                    \begin{itemize}
+                      \item \((\Rightarrow)\) \(x \in A \cap (A \cup B) \implies x \in A\).
+                            \begin{align*}
+                              x \in A \cap (A \cup B) &\implies x \in A \land x \in (A \cup B) \\
+                                                     &\implies x \in A \land (x \in A \lor x \in B)) \\
+                                                     &\implies x \in A
+                            \end{align*}
+                      \item \((\Leftarrow)\) \(x \in A \implies x \in A \cap (A \cup B)\)
+                            \begin{align*}
+                              x \in A &\implies x \in A \land x \in A \\
+                                      &\implies x \in A \land (x \in A \lor x \in B) \\
+                                      &\implies x \in A \cap (A \cup B) \\
+                            \end{align*}
+                    \end{itemize}
+            \end{itemize}
     \end{itemize}
-    Ik snap deze drie stellingen, maar hoe bewijs je ze effectief? Ik zou daar tekeningen voor maken,
-    maar dat lijkt mij niet de bedoeling.
     
   % Oefening 17
   \item Wanneer is \(x \not\in \bigcup_{i \in I} A_i\)? \\
@@ -386,12 +453,49 @@
   \end{itemize}
 
   % Oefening 21
+  \needspace{5\baselineskip}
   \item Zij \(f : A \rightarrow B\) een functie en \(S_1, S_2 \subset A\). Bewijs dat
   \begin{enumerate}[label=\alph*)]
     \item \(f(S_1 \cup S_2) = f(S_1) \cup f(S_2)\)
     \item \(f(S_1 \cap S_2) \subset f(S_1) \cap f(S_2)\)
   \end{enumerate}
   Zoek voorbeelden die dit illustreren.
+  
+  
+  
+  \begin{tcolorbox}[title=Ter herinnering]
+    Voor een functie \(f : A \rightarrow B\) en \(S \subset A \) definiëren we het beeld van \(S\)
+    door \(f\) als 
+    \begin{align*}
+      f(S) &= \{f(s) \mid s \in S\} \\
+          &= \{b \in B \mid \exists s \in S : f(s) = b\}
+    \end{align*}
+  \end{tcolorbox}
+
+  \begin{enumerate}[label=\alph*)]
+    \item \(f(S_1 \cup S_2) = f(S_1) \cup f(S_2)\), ofwel 
+          \(b \in f(S_1 \cup S_2) \iff b \in f(S_1) \cup f(S_2)\)
+          \begin{itemize}
+            \item \((\Rightarrow)\) Stel \(b \in f(S_1 \cup S_2)\). Te bewijzen: \(b \in f(S_1) \cup f(S_2)\).
+                  \begin{align*}
+                    b \in f(S_1 \cup S_2) &\iff \exists s \in S_1 \cup S_2 : f(s) = b \\
+                                          &\iff (\exists s \in S_1 : f(s) = b) \lor (\exists s \in S_2 : f(s) = b) \\
+                                          &\iff b \in f(S_1) \lor b \in f(S_2) \\
+                                          &\iff b \in f(S_1) \cup f(S_2)
+                  \end{align*}
+            \item \((\Leftarrow)\) Aangezien hierboven \(\iff\) gebruikt werd, is dit ook bewezen.
+          \end{itemize}
+
+    \item \(f(S_1 \cap S_2) \subset f(S_1) \cap f(S_2)\), ofwel
+          \(b \in f(S_1 \cap S_2) \implies b \in f(S_1) \cap f(S_2)\)
+          \begin{align*}
+            b \in f(S_1 \cap S_2) &\iff \exists s \in S_1 \cap S_2 : f(s) = b \\
+                                  &\iff (\exists s \in S_1 : f(s) = b) \land (\exists s \in S_2 : f(s) = b) \\
+                                  &\iff b \in f(S_1) \land b \in f(S_2) \\
+                                  &\iff b \in f(S_1) \cap f(S_2)
+          \end{align*}
+          
+  \end{enumerate}
 
   % Oefening 22
   \item Zij \(f : A \rightarrow B\) een functie die niet noodzakelijk inverteerbaar is, en \(S \subset A\) en \(T, T_1, T_2 \subset B\). Bewijs dat
@@ -402,6 +506,53 @@
     \item \(f^{-1}(f(S)) \supset S\)
   \end{enumerate}
   Zoek voorbeelden die dit illustreren.
+
+  \begin{tcolorbox}[title=Ter herinnering]
+    Voor een functie \(f : A \rightarrow B\) en \(T \subset B \) definiëren we het inverse beeld
+    van \(T\) onder \(f\) als
+    \[ f^{-1}(T) = \{a \in A \mid f(a) \in T\} \]
+  \end{tcolorbox}
+
+  \begin{enumerate}[label=\alph*)]
+    \item \(f^{-1}(T_1 \cup T_2) = f^{-1}(T_1) \cup f^{-1}(T_2)\), ofwel
+          \(a \in f^{-1}(T_1 \cup T_2) \iff a \in f^{-1}(T_1) \cup f^{-1}(T_2)\)
+          \begin{itemize}
+            \item \((\Rightarrow)\) Stel \(a \in f^{-1}(T_1 \cup T_2)\). Te bewijzen: \(a \in f^{-1}(T_1) \cup f^{-1}(T_2)\).
+                  \begin{align*}
+                    a \in f^{-1}(T_1 \cup T_2) &\iff f(a) \in T_1 \cup T_2 \\
+                                               &\iff f(a) \in T_1 \lor f(a) \in T_2 \\
+                                               &\iff a \in f^{-1}(T_1) \lor a \in f^{-1}(T_2) \\
+                                               &\iff a \in f^{-1}(T_1) \cup f^{-1}(T_2)
+                  \end{align*}
+                  Aangezien er \(\iff\) is gebruikt, is ook de andere richting bewezen.
+          \end{itemize}
+
+    \item \(f^{-1}(T_1 \cap T_2) = f^{-1}(T_1) \cap f^{-1}(T_2)\), ofwel
+          \(a \in f^{-1}(T_1 \cap T_2) \iff a \in f^{-1}(T_1) \cap f^{-1}(T_2)\)
+          \begin{itemize}
+            \item \((\Rightarrow)\) Stel \(a \in f^{-1}(T_1 \cap T_2)\). Te bewijzen: \(a \in f^{-1}(T_1) \cap f^{-1}(T_2)\).
+                  \begin{align*}
+                    a \in f^{-1}(T_1 \cap T_2) &\iff f(a) \in T_1 \cap T_2 \\
+                                               &\iff f(a) \in T_1 \land f(a) \in T_2 \\
+                                               &\iff a \in f^{-1}(T_1) \land a \in f^{-1}(T_2) \\
+                                               &\iff a \in f^{-1}(T_1) \cap f^{-1}(T_2)
+                  \end{align*}
+                  Aangezien er \(\iff\) is gebruikt, is ook de andere richting bewezen.
+          \end{itemize}
+          
+    \item \(f(f^{-1}(T)) \subset T\), ofwel 
+          \(b \in f(f^{-1}(T)) \implies b \in T\)
+          \begin{align*}
+            b \in f(f^{-1}(T)) &\iff \exists a \in f^{-1}(T) : f(a) = b \\
+                               &\iff \exists a \in A : f(a) = b \land f(a) \in T \\
+                               &\implies b \in T
+          \end{align*}
+    \item \(f^{-1}(f(S)) \supset S\), ofwel 
+          \(s \in S \implies s \in f^{-1}(f(S))\)
+          \begin{align*}
+            s \in S &\implies 
+          \end{align*}
+  \end{enumerate}
 
   % Oefening 23
   \item Toon aan: \(f : A \rightarrow B\) is injectief \(\Leftrightarrow \forall b \in B : f^{-1}(b)\) bevat hoogstens één element.
