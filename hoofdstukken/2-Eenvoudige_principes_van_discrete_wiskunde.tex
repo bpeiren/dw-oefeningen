@@ -253,6 +253,175 @@ rij tegen het bord zetten?
   \item 
 \end{enumerate}
 
+\section*{Examen 2018}
+
+\begin{enumerate}
+  \item In de volgende opgaven wordt gevraagd om woorden te tellen. Een \emph{woord} is voor ons
+        eenvoudigweg een opeenvolging van een aantal letters: we beperken ons hier dus niet 
+        tot wat we in het woordenboek terugvinden! Een uitdrukking met sommen, verschillen en
+        producten van getallen (en eventueel binomiaalcoëfficiënten) volstaat telkens als antwoord.
+        Je hoeft de resultaten dus niet per se volledig uit te rekenen.
+        
+        \begin{enumerate}
+          \item Hoeveel woorden van van zeven letters kun je maken met de letters a, b, c en d (bv.
+                \emph{caaddac} of \emph{bbbbbbb})?
+                \\[1em]
+                7 keer kiezen uit 4 letters, volgorde is van belang:
+                \[4^7\]
+
+          \item In hoeveel van deze woorden komt de letter d minstens één keer voor?
+                \\[1em]
+                Totaal aantal woorden - aantal woorden zonder d:
+                \[4^7 - 3^7\]
+
+          \item In hoeveel van deze woorden komt de letter a precies drie keer voor?
+                \\[1em]
+                We moeten drie keer een positie kiezen om een a te zetten. We kunnen niet drie keer dezelfde
+                positie kiezen, want dan hebben we maar één a. Herhaling is dus niet toegestaan.
+                \[\binom{7}{3} = \frac{7!}{3!(7-3)!} = \frac{7!}{3!4!} = \frac{7 \cdot \cancel{6} \cdot 5 \cdot \cancel{4!}}{\cancel{3!}\cancel{4!}} = 35\]
+                Er zijn \(3^4\) manieren om de overige \(4\) letters te kiezen uit de resterende \(3\) letters.
+                \[35 \cdot 3^4\]
+
+
+          \item In hoeveel van deze woorden komt elk van de letters a, b, c en d minstens één keer
+                voor (bv. \emph{aacddbb}, maar niet \emph{cadacad})?
+                \begin{align*}
+                  W &= 4^7 \\
+                  W_{\cancel{a}} = W_{\cancel{b}} = W_{\cancel{c}} = W_{\cancel{d}} &= 3^7 \\
+                \end{align*}
+                \begin{align*}
+                  &|W \setminus (W_{\cancel{a}} \cup W_{\cancel{b}} \cup W_{\cancel{c}} \cup W_{\cancel{d}})|\\
+                  &= |W| - |W_{\cancel{a}} \cup W_{\cancel{b}} \cup W_{\cancel{c}} \cup W_{\cancel{d}}| \\
+                  %%%%%
+                  &= |W| - ( \\
+                  &\qquad |W_{\cancel{a}}| + |W_{\cancel{b}}| + |W_{\cancel{c}}| + |W_{\cancel{d}}| \\
+                  &\qquad - (|W_{\cancel{a}} \cap W_{\cancel{b}}| + |W_{\cancel{a}} \cap W_{\cancel{c}}| + |W_{\cancel{a}} \cap W_{\cancel{d}}| + |W_{\cancel{b}} \cap W_{\cancel{c}}| + |W_{\cancel{b}} \cap W_{\cancel{d}}| + |W_{\cancel{c}} \cap W_{\cancel{d}}|)  \\
+                  &\qquad + (|W_{\cancel{a}} \cap W_{\cancel{b}} \cap W_{\cancel{c}}| + |W_{\cancel{a}} \cap W_{\cancel{b}} \cap W_{\cancel{d}}| + |W_{\cancel{a}} \cap W_{\cancel{c}} \cap W_{\cancel{d}}| + |W_{\cancel{b}} \cap W_{\cancel{c}} \cap W_{\cancel{d}}|) \\
+                  &\qquad - |W_{\cancel{a}} \cap W_{\cancel{b}} \cap W_{\cancel{c}} \cap W_{\cancel{d}}| \\
+                  &\qquad) \\
+                  %%%%%
+                  &= 4^7 - ( \\
+                  &\qquad 3^7 + 3^7 + 3^7 + 3^7 \\
+                  &\qquad - (2^7 + 2^7 + 2^7 + 2^7 + 2^7 + 2^7) \qquad \text{(enkel de resterende 2 letters gebruiken)} \\
+                  &\qquad + (1^7 + 1^7 + 1^7 + 1^7) \qquad \text{(slechts één letter gebruiken)} \\
+                  &\qquad - 0 \qquad \text{(geen enkele letter gebruiken: kan niet)} \\
+                  &\qquad) \\
+                  %%%%%
+                  &= 4^7 - (4 \cdot 3^7 - 6 \cdot 2^7 + 4 \cdot 1^7 - 0) \\
+                \end{align*}
+
+          \item Hoeveel woorden van vijf letters kun je maken met de letters a, b, c en d als twee
+                van deze letters precies twee keer dienen voor te komen (bv. \emph{accad} of \emph{bddcc}, maar
+                niet \emph{bbbaa} of \emph{aabcd})?
+        \end{enumerate}
+\end{enumerate}
+
+\section*{Examen ????}
+Op hoeveel manieren kunnen we op het onderstaande \enquote{schaakbord} (met 40 zwarte en 40 witte vakken)
+pionnen plaatsen ...
+\begin{enumerate}
+  \item vier identieke pionnen plaatsen op verschillende vakken?
+  \item vier identieke pionnen plaatsen op verschillende vakken als deze niet alle van dezelfde kleur mogen zijn?
+  \item vier identieke pionnen plaatsen op verschillende vakken die niet alle in dezelfde rij liggen, en niet alle van dezelfde kleur zijn?
+  \item vier identieke pionnen plaatsen op niet noodzakelijk verschillende vakken als de pionnen niet alle in dezelfde kolom mogen liggen?
+\end{enumerate}
+
+\noindent\textbf{N.B.} We houden hierbij geen rekening met welke pion als eerste wordt geplaatst,
+welke als tweede, enz. Een uitdrukking met sommen, verschillen en producten van getallen
+(en eventueel binomiaalcoëfficiënten) volstaat telkens als antwoord. De resultaten hoeven
+dus niet per se volledig te worden uitgerekend.
+
+\begin{figure}[H]
+  \centering
+
+  \begin{tikzpicture}[scale=0.35]
+    % Horizontale lijnen
+    \draw (4,12) -- (8,12);
+    \draw (0, 8) -- (4, 8);
+    \draw (8, 8) -- (12,8);
+    \draw (0, 4) -- (4, 4);
+    \draw (8, 4) -- (12,4);
+    \draw (4, 0) -- (8, 0);
+
+    % Verticale lijnen
+    \draw (0, 4) -- (0, 8);
+    \draw (4, 8) -- (4,12);
+    \draw (4, 0) -- (4, 4);
+    \draw (8, 8) -- (8,12);
+    \draw (8, 0) -- (8, 4);
+    \draw (12,4) -- (12,8);
+
+
+    % teken het kruis: alle (x,y) met x in 4..7 of y in 4..7, 0<=x,y<=11
+    \foreach \x in {0,...,11} {
+      \foreach \y in {0,...,11} {
+        \pgfmathtruncatemacro{\inC}{(\x>=4 && \x<=7) || (\y>=4 && \y<=7)}
+        \ifnum\inC=1\relax
+          \pgfmathtruncatemacro{\p}{mod(\x+\y,2)}
+          \ifnum\p=0\relax
+            \fill[black] (\x,\y) rectangle ++(1,1);
+          \fi
+          % \draw (\x,\y) rectangle ++(1,1);
+        \fi
+      }
+    }
+  \end{tikzpicture}
+\end{figure}
+
+\begin{enumerate}
+  \item Dit komt neer op 4 vakken kiezen:
+        \[\binom{80}{4} = \frac{80!}{(80-4)!4!}\]
+
+  \item Kies een wit vak, kies een zwart vak, en kies de laatste twee uit de resterende 78 vakken:
+        
+        \begin{align*}
+            \binom{40}{1} \cdot \binom{40}{1} \cdot \binom{78}{2} 
+            &= 40 \cdot 40 \cdot \frac{78!}{76!2!} \\
+            &= 1600 \cdot \frac{78 \cdot 77}{2} \\
+            &= 1600 \cdot 39 \cdot 77 \\
+            &= \num{1238400} 
+        \end{align*}
+
+        Ofwel: totaal - allemaal wit - allemaal zwart:
+        \begin{align*}
+          \binom{80}{4} - \binom{40}{4} - \binom{40}{4} 
+          &= \frac{80!}{76!4!} - \frac{40!}{36!4!} - \frac{40!}{36!4!} \\
+          &= \frac{80!}{76!4!} - 2 \cdot \frac{40!}{36!4!} \\
+          &= \frac{80 \cdot 79 \cdot 78 \cdot 77}{4!} - 2 \cdot \frac{40 \cdot 39 \cdot 38 \cdot 37}{4!} \\
+          &= \frac{80 \cdot 79 \cdot 78 \cdot 77 - 2 \cdot 40 \cdot 39 \cdot 38 \cdot 37}{4!} \\
+          &= \frac{80 \cdot 79 \cdot 78 \cdot 77 - 2 \cdot 40 \cdot 39 \cdot 38 \cdot 37}{24} \\
+          &= \num{1238400}
+        \end{align*}
+
+  \item Eerst twee rijen kiezen en daarin een vak kiezen, is moeilijk aangezien er rijen zijn met 
+        4 vakken en rijen met 12 vakken. Beter dus met inclusie/exclusie werken:
+        \\
+        totaal - (allemaal zelfde kleur (K) + allemaal zelfde rij (R()))
+        \begin{align*}
+          \binom{80}{4} - ( |K| \cup |R| )
+          &= \binom{80}{4} - ( |K| + |R| - |K \cap R| ) \\
+          &= \binom{80}{4} - \left( 
+            2 \cdot \binom{40}{4} 
+            + \left(
+                8 \cdot \binom{4}{4} 
+                + 4 \cdot \binom{12}{4}
+              \right)
+            - \left(4 \cdot 2 \cdot \binom{6}{4} \right)
+          \right) \\
+        \end{align*}
+
+  \item Nu is wel herhaling toegestaan.
+        totaal - allemaal zelfde kolom (K)
+        \begin{align*}
+          &\binom{80 + 4 - 1}{4} - \left(
+            8 \cdot \binom{4 + 4 - 1}{4} + 4 \cdot \binom{12 + 4 - 1}{4}
+          \right) \\
+          &= \frac{83!}{4!(83-4)!} - \left(
+            8 \cdot \frac{7!}{4!(7-4)!} + 4 \cdot \frac{15!}{4!(15-4)!}
+          \right)
+        \end{align*}
+\end{enumerate}
+
 \section*{Samenvatting}
 \noindent
 Gegeven: \(|A| = k \quad |B| = n\)
