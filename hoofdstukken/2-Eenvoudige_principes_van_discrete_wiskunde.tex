@@ -45,14 +45,14 @@ rij tegen het bord zetten?
   \item Stel dat we vijf punten kiezen in een gelijkzijdige driehoek met zijde
         1. Toon aan dat er minstens één paar punten is waarvan de onderlinge
         afstand ten hoogste 1/2 is.
-        \\
+        
         Drie van de punten kunnen in de hoeken van de driehoek liggen. Rond die drie 
         punten trekken we een cirkel met straal 1/2. Het vierde punt kan in het midden
         van de driehoek, buiten de cirkels, liggen. Het vijfde punt ligt ofwel buiten
         de cirkels, en ligt dan op afstand ten hoogste 1/2 van het vierde punt, ofwel
         ligt het binnen één van de cirkels, en dus op afstand ten hoogste 1/2 van het
         middelpunt van die cirkel.
-        \\[1em]
+        
         Ofwel: driehoek verdelen in 4 kleinere driehoeken met zijde 1/2. In minstens 
         één driehoek liggen minstens 2 punten.
 
@@ -62,15 +62,16 @@ rij tegen het bord zetten?
         \begin{align*}
           23 - 1 &= 22      & 22/11 = 2 \\
            23/11 &= 2 + 1   & \\
-            1/11 &= 0 + 1   & 
+            1/11 &= 0 + 1   
         \end{align*}
+
         Getallen waarvan het verschil deelbaar is door 11, hebben dus een
         gelijke rest bij deling door 11.
+
         Er zijn 11 mogelijke resten bij deling door 11: 0 tot en met 10. We kunnen
         11 getallen hebben met verschillende resten. Het twaalfde getal zal dezelfde
         rest hebben als één van de andere. Het verschil van beide is dus
         deelbaar door 11.
-        \\[1em]
         \begin{align*}
           \exists i \neq j: & a_i = q_i \cdot 11 + r_i \quad (0 \leq r_i \leq 10) \\
                             & a_j = q_j \cdot 11 + r_j \quad (0 \leq r_j \leq 10) \\
@@ -80,29 +81,28 @@ rij tegen het bord zetten?
                     &= (q_i - q_j) \cdot 11 \\
         \end{align*}
         Dus, \(a_i - a_j\) is deelbaar door 11.
-  \item 
-  \item 
-  \item 
-  \item 
-  % Oefening 10
-  \item Als je 500000 "woorden" hebt van 4 of minder letters, kan het dan
+
+\end{enumerate}
+
+\begin{enumerate}[start=10]
+  % Oefening 10 
+  \item Als je 500000 \enquote{woorden} hebt van 4 of minder letters, kan het dan
         dat ze allemaal verschillend zijn?
         \begin{align*}
           \begin{array}{lrr}
             1 \text{ letter}  & 26^1 = & 26 \\
             2 \text{ letters} & 26^2 = & 676 \\
-            3 \text{ letters} & 26^3 = & 17576 \\
-              4 \text{ letters} & 26^4 = & \underline{456976} \\
-                              &        & 475254
+            3 \text{ letters} & 26^3 = & \num{17576} \\
+            4 \text{ letters} & 26^4 = & \num{456976} \\
+            \cline{3-3}
+                              &        & \num{475254}
           \end{array}
         \end{align*}
         Neen. In totaal zijn er \num{475254} mogelijke woorden, minder dan \num{500000}.
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
   
+\end{enumerate}
+
+\begin{enumerate}[start=16]
   % Oefening 16
   \item In een gemengde groep zitten 32 jongens. Elk van de jongens kent 5
         meisjes van de klas, en elk meisje kent 8 jongens van de klas. Hoeveel
@@ -120,20 +120,24 @@ rij tegen het bord zetten?
           x &= \frac{32 \cdot 5}{8} \\
           x &= 20
         \end{align*}
-  \item 
-  \item 
-  \item 
-  
+
+\end{enumerate}
+
+\begin{enumerate}[start=20]
   % Oefening 20
   \item Hoeveel woorden van 4 letters uit een alfabet van 10 letters kan je
         maken als elke letter hoogstens 1 keer mag gebruikt worden?
         \\[1em]
         \(\dfrac{n!}{(n-k)!} = \dfrac{10!}{(10-4)!} = \dfrac{10!}{6!} = 10 \cdot 9 \cdot 8 \cdot 7 = \num{5040}\)
-  \item 
-  \item 
+
+\end{enumerate}
+
+\begin{enumerate}[start=23]
   \item Een dominoblokje kan voorgesteld worden als \([x \mid y]\), met \(x, y \in [0..6]\). Toon aan dat er 28 blokjes zijn (en geen 49).
         \[\binom{7+2-1}{2} = \frac{8!}{2!6!} = \frac{8 \cdot 7}{2} = 28\]
-  \item 
+\end{enumerate}
+
+\begin{enumerate}[start=25]
   \item Er zitten \(m\) meisjes en \(n\) jongens in een klas. Op hoeveel manieren
         kan je ze in een rij zetten als alle meisjes samen moeten staan?
         \\[1em]
@@ -145,31 +149,20 @@ rij tegen het bord zetten?
         Op de resterende posities kunnen de jongens op \(n!\) manieren gezet worden:
         \[m!(n + 1)n!\]
 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
+\end{enumerate}
+
+\begin{enumerate}[start=35]
   % Oefening 35
   \item Toon aan: als 3 identieke dobbelstenen geworpen worden, zijn er 56
         mogelijke uitkomsten. Hoeveel zijn er bij n identieke dobbelstenen?
-  \begin{enumerate}
-    \item \(\displaystyle \binom{6 + 3 - 1}{3} = \binom{8}{3} = \frac{8!}{3!5!} = \frac{8 \cdot 7 \cdot 6 \cdot \cancel{5!}}{3!\cancel{5!}} = \frac{8 \cdot 7 \cdot \cancel{6}}{\cancel{3!}} = 56\)
-    \item \(\displaystyle \binom{6 + n - 1}{n}\)
-  \end{enumerate}
-  \item 
-  \item 
-  \item 
-  \item 
-  % Oefening 40
-  \item 
-  \item 
-  \item 
-  \item 
+      \begin{enumerate}
+        \item \(\displaystyle \binom{6 + 3 - 1}{3} = \binom{8}{3} = \frac{8!}{3!5!} = \frac{8 \cdot 7 \cdot 6 \cdot \cancel{5!}}{3!\cancel{5!}} = \frac{8 \cdot 7 \cdot \cancel{6}}{\cancel{3!}} = 56\)
+        \item \(\displaystyle \binom{6 + n - 1}{n}\)
+      \end{enumerate}
+
+\end{enumerate}
+
+\begin{enumerate}[start=44]
   % Oefening 44
   \item In een klas van 67 wiskundestudenten zijn er 47 die Frans kennen, 35
         die Duits kennen en 23 die zowel Frans als Duits kennen. Hoeveel kennen 
@@ -198,6 +191,7 @@ rij tegen het bord zetten?
                                         &= 67 - 47 - 35 - 20 + 23 + 12 + 11 - 5 \\
                                         &= 6 \\
         \end{align*}
+
   % Oefening 45
   \item Hoeveel woorden kan je maken met de letters A, E, M, O, U, Y
         (elk 1 keer gebruiken) als de opeenvolgingen ME en YOU niet mogen
@@ -209,7 +203,7 @@ rij tegen het bord zetten?
         \end{align*}
         \begin{align*}
           |W \setminus (W_{ME} \cup W_{YOU})| &= |W| - (|W_{ME}| + |W_{YOU}| - (|W_{ME} \cap W_{YOU}|)) \\
-          &\quad\text{where}\quad
+          &\quad\text{met}\quad
           \begin{alignedat}{2}
             |W| &= 6! &&= 720
           \end{alignedat}
@@ -240,17 +234,6 @@ rij tegen het bord zetten?
           &= 720 - 138 \\
           &= 582
         \end{align*}
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
 \end{enumerate}
 
 \section*{Examen 2018}

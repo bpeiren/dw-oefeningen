@@ -12,18 +12,18 @@
         \item \(q(x): x \mod 2 = 0\) (er bestaat \(m\in\mathbb{Z}\) zodat \(x=2m\))
             \end{itemize}
         \item Negatie: \(\neg p(x)\): \(x \mod 10 \ne 0\) ("\(x\) is niet deelbaar door 10").
-        \item Conjunctie: \(p(x) \land q(x)\): \(x \mod 10 = 0 \land x \mod 2 = 0\). Dit reduceert tot \(x \mod 10 = 0\) omdat \(x \mod 10 = 0 \impl x \mod 2 = 0\).
-        \item Implicatie \(q(x)\impl p(x)\): \(x \mod 2 = 0 \Rightarrow x \mod 10 = 0\). \\
+        \item Conjunctie: \(p(x) \land q(x)\): \(x \mod 10 = 0 \land x \mod 2 = 0\). Dit reduceert tot \(x \mod 10 = 0\) omdat \(x \mod 10 = 0 \implies x \mod 2 = 0\).
+        \item Implicatie \(q(x)\implies p(x)\): \(x \mod 2 = 0 \Rightarrow x \mod 10 = 0\). \\
                 Contrapositie: \(x \mod 10 \ne 0 \Rightarrow x \mod 2 \ne 0\).
-        \item Equivalentie \(p(x)\biimpl q(x)\): \(x \mod 10 = 0 \Leftrightarrow x \mod 2 = 0\).
+        \item Equivalentie \(p(x)\Leftrightarrow q(x)\): \(x \mod 10 = 0 \Leftrightarrow x \mod 2 = 0\).
     \end{enumerate}
     Waarheidswaarden:
     \begin{itemize}
-        \item \(q(x)\impl p(x)\) is \textbf{onwaar}: neem \(x=2\) dan \(2 \mod 2 = 0\) maar \(2 \mod 10 \ne 0\).
-        \item Contrapositie \(\neg p(x)\impl \neg q(x)\) is dus ook onwaar: neem \(x=2\) dan antecedent \(2 \mod 10 \ne 0\) waar, consequent \(2 \mod 2 \ne 0\) onwaar.
+        \item \(q(x)\implies p(x)\) is \textbf{onwaar}: neem \(x=2\) dan \(2 \mod 2 = 0\) maar \(2 \mod 10 \ne 0\).
+        \item Contrapositie \(\neg p(x)\implies \neg q(x)\) is dus ook onwaar: neem \(x=2\) dan antecedent \(2 \mod 10 \ne 0\) waar, consequent \(2 \mod 2 \ne 0\) onwaar.
         \item \(p(x)\land q(x)\) is waar precies voor \(x \mod 10 = 0\) (alle veelvouden van 10).
         \item Negatie \(\neg p(x)\) is waar voor alle \(x\) met \(x \mod 10 \ne 0\).
-        \item Equivalentie \(p(x)\biimpl q(x)\) is onwaar: \(x=2\) is tegenvoorbeeld (rechts waar, links onwaar); ook \(x=10\) maakt beide waar maar één voorbeeld volstaat om onwaarheid aan te tonen.
+        \item Equivalentie \(p(x)\Leftrightarrow q(x)\) is onwaar: \(x=2\) is tegenvoorbeeld (rechts waar, links onwaar); ook \(x=10\) maakt beide waar maar één voorbeeld volstaat om onwaarheid aan te tonen.
     \end{itemize}
 
   % Oefening 2
@@ -42,10 +42,10 @@
   % Oefening 3
   \item Waarheidstabellen:
   \begin{enumerate}[label=\roman*)]
-  \item \((p \impl q) \impl (q \impl p)\):
+  \item \((p \implies q) \implies (q \implies p)\):
      \[
      \begin{array}{c c | c c | c}
-       p & q & p\impl q & q\impl p & (p\impl q)\impl(q\impl p) \\\hline
+       p & q & p\implies q & q\implies p & (p\implies q)\implies(q\implies p) \\\hline
        T & T & T & T & T \\
        T & F & F & T & T \\
        F & T & T & F & F \\
@@ -53,10 +53,10 @@
      \end{array}
      \]
 
-  \item \(q \biimpl (\neg p \lor \neg q)\):
+  \item \(q \Leftrightarrow (\neg p \lor \neg q)\):
      \[
      \begin{array}{c c | c c | c}
-       p & q & \neg p \lor \neg q & q\biimpl(\neg p \lor \neg q) \\\hline
+       p & q & \neg p \lor \neg q & q\Leftrightarrow(\neg p \lor \neg q) \\\hline
        T & T & F & F \\
        T & F & T & F \\
        F & T & T & T \\
@@ -64,10 +64,10 @@
      \end{array}
      \]
 
-  \item \([(p\impl q) \land (q\impl r)] \impl (p \impl r)\) (transitiviteit van implicatie):
+  \item \([(p\implies q) \land (q\implies r)] \implies (p \implies r)\) (transitiviteit van implicatie):
      \[
      \begin{array}{c c c | c c | c | c | c}
-       p & q & r & p\impl q & q\impl r & (p\impl q)\land(q\impl r) & p\impl r & \text{geheel} \\\hline
+       p & q & r & p\implies q & q\implies r & (p\implies q)\land(q\implies r) & p\implies r & \text{geheel} \\\hline
        T & T & T & T & T & T & T & T \\
        T & T & F & T & F & F & F & T \\
        T & F & T & F & T & F & T & T \\
@@ -109,17 +109,17 @@
   \end{enumerate}
 
   % Oefening 5
-  \item Toon aan dat \(p \biimpl q\) en \((p \impl q) \land (q \impl p)\) logisch equivalent zijn.
+  \item Toon aan dat \(p \Leftrightarrow q\) en \((p \implies q) \land (q \implies p)\) logisch equivalent zijn.
     \[
     \begin{array}{c c | c | c c | c}
-        p & q & p \biimpl q & p \impl q & q \impl p & (p \impl q) \land (q \impl p) \\\hline
+        p & q & p \Leftrightarrow q & p \implies q & q \implies p & (p \implies q) \land (q \implies p) \\\hline
         T & T & T & T & T & T \\
         T & F & F & F & T & F \\
         F & T & F & T & F & F \\
         F & F & T & T & T & T \\
     \end{array}
     \]
-    De kolom \(p \biimpl q\) is identiek aan \((p \impl q) \land (q \impl p)\), dus ze zijn logisch equivalent.
+    De kolom \(p \Leftrightarrow q\) is identiek aan \((p \implies q) \land (q \implies p)\), dus ze zijn logisch equivalent.
 
   % Oefening 6
   \item Elke uitspraak in een waarheidstafel kan waar of onwaar zijn. Het aantal rijen van een waarheidstafel wordt bepaald door het aantal mogelijke combinaties 
