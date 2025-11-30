@@ -1,0 +1,890 @@
+% !TEX root = ../dw-oefeningen.tex
+\documentclass[../dw-oefeningen.tex]{subfiles}
+\begin{document}
+\chapter{Inleiding tot de grafentheorie}
+
+% \section*{Theorie}
+\section*{Oefeningen}
+
+\begin{enumerate}
+  \item Professor McBrain en zijn echtgenote April geven een feestje waar
+        nog vier andere koppels op uitgenodigd zijn. Sommige mensen schudden 
+        elkaar de hand, maar uiteraard niet hun eigen partner. Op het
+        eind van het feestje vraagt McBrain aan alle gasten en aan zijn vrouw
+        aan hoeveel mensen ze een hand hebben gegeven, en hij krijgt negen
+        verschillende antwoorden. Hoeveel mensen hebben een hand gegeven
+        aan April?
+
+        \hrulefill
+
+        9 verschillende antwoorden betekent dat de graad van de 9 toppen 
+        verschillend is.
+
+        Er zijn 10 mensen. De persoon zelf en de partner vallen af, dus 
+        er kunnen maximum 8 personen de hand geschud worden. De mogelijke 
+        antwoorden liggen dus tussen 0 en 8, 9 verschillende antwoorden:
+        
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt, label=90:P] (nP) at (90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=54:8] (n8) at (54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=18:7] (n7) at (18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-18:6] (n6) at (-18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-54:5] (n5) at (-54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-90:4] (n4) at (-90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-126:3] (n3) at (-126:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-162:2] (n2) at (-162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=162:1] (n1) at (162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=126:0] (n0) at (126:2.5) {};
+        \end{tikzpicture}
+        \end{center}
+
+        De persoon die 8 mensen de hand heeft geschud, heeft iedereen de hand 
+        geschud, behalve:
+        \begin{itemize}
+          \item zichzelf
+          \item de persoon die 0 mensen de hand heeft geschud
+        \end{itemize}
+        
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt, label=90:P] (nP) at (90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=54:8] (n8) at (54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=18:7] (n7) at (18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-18:6] (n6) at (-18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-54:5] (n5) at (-54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-90:4] (n4) at (-90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-126:3] (n3) at (-126:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-162:2] (n2) at (-162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=162:1] (n1) at (162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=126:0] (n0) at (126:2.5) {};
+          
+          \draw (n8) -- (nP);
+          \draw (n8) -- (n7);
+          \draw (n8) -- (n6);
+          \draw (n8) -- (n5);
+          \draw (n8) -- (n4);
+          \draw (n8) -- (n3);
+          \draw (n8) -- (n2);
+          \draw (n8) -- (n1);
+        \end{tikzpicture}
+        \end{center}
+
+        Het eerste koppel dat we kunnen identificeren, is dus het koppel \((8, 0)\).
+
+        Top 7 mag niet verbonden worden met:
+        \begin{itemize}
+          \item zichzelf
+          \item de persoon die 0 mensen de hand heeft geschud
+          \item de persoon die 1 persoon de hand heeft geschud, want die is al verbonden
+                met 8
+        \end{itemize}
+
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt, label=90:P] (nP) at (90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=54:8] (n8) at (54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=18:7] (n7) at (18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-18:6] (n6) at (-18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-54:5] (n5) at (-54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-90:4] (n4) at (-90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-126:3] (n3) at (-126:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-162:2] (n2) at (-162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=162:1] (n1) at (162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=126:0] (n0) at (126:2.5) {};
+          
+          \draw (n8) -- (nP);
+          \draw (n8) -- (n7);
+          \draw (n8) -- (n6);
+          \draw (n8) -- (n5);
+          \draw (n8) -- (n4);
+          \draw (n8) -- (n3);
+          \draw (n8) -- (n2);
+          \draw (n8) -- (n1);
+          
+          \draw (n7) -- (nP);
+          \draw (n7) -- (n6);
+          \draw (n7) -- (n5);
+          \draw (n7) -- (n4);
+          \draw (n7) -- (n3);
+          \draw (n7) -- (n2);
+        \end{tikzpicture}
+        \end{center}
+
+        Het tweede koppel dat we kunnen identificeren, is dus het koppel \((7, 1)\).
+
+        Dit kan verder met 6:
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt, label=90:P] (nP) at (90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=54:8] (n8) at (54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=18:7] (n7) at (18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-18:6] (n6) at (-18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-54:5] (n5) at (-54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-90:4] (n4) at (-90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-126:3] (n3) at (-126:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-162:2] (n2) at (-162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=162:1] (n1) at (162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=126:0] (n0) at (126:2.5) {};
+          
+          \draw (n8) -- (nP);
+          \draw (n8) -- (n7);
+          \draw (n8) -- (n6);
+          \draw (n8) -- (n5);
+          \draw (n8) -- (n4);
+          \draw (n8) -- (n3);
+          \draw (n8) -- (n2);
+          \draw (n8) -- (n1);
+          
+          \draw (n7) -- (nP);
+          \draw (n7) -- (n6);
+          \draw (n7) -- (n5);
+          \draw (n7) -- (n4);
+          \draw (n7) -- (n3);
+          \draw (n7) -- (n2);
+          
+          \draw (n6) -- (nP);
+          \draw (n6) -- (n5);
+          \draw (n6) -- (n4);
+          \draw (n6) -- (n3);
+        \end{tikzpicture}
+        \end{center}
+
+        Het derde koppel is dus \((6, 2)\).
+        
+        Dit kan verder met 6:
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt, label=90:P] (nP) at (90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=54:8] (n8) at (54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=18:7] (n7) at (18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-18:6] (n6) at (-18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-54:5] (n5) at (-54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-90:4] (n4) at (-90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-126:3] (n3) at (-126:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-162:2] (n2) at (-162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=162:1] (n1) at (162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=126:0] (n0) at (126:2.5) {};
+          
+          \draw (n8) -- (nP);
+          \draw (n8) -- (n7);
+          \draw (n8) -- (n6);
+          \draw (n8) -- (n5);
+          \draw (n8) -- (n4);
+          \draw (n8) -- (n3);
+          \draw (n8) -- (n2);
+          \draw (n8) -- (n1);
+          
+          \draw (n7) -- (nP);
+          \draw (n7) -- (n6);
+          \draw (n7) -- (n5);
+          \draw (n7) -- (n4);
+          \draw (n7) -- (n3);
+          \draw (n7) -- (n2);
+          
+          \draw (n6) -- (nP);
+          \draw (n6) -- (n5);
+          \draw (n6) -- (n4);
+          \draw (n6) -- (n3);
+          
+          \draw (n5) -- (nP);
+          \draw (n5) -- (n4);
+        \end{tikzpicture}
+        \end{center}
+
+        Het vierde koppel is dus \((5, 3)\).
+
+        De geïdentificeerde koppels zijn dus:
+        \begin{align*}
+          \begin{tabular}{cc}
+            8 & 0 \\
+            7 & 1 \\
+            6 & 2 \\
+            5 & 3 
+          \end{tabular}
+        \end{align*}
+
+        Het laatste overblijvende koppel is dan \((P, 4)\), de professor en April.
+
+        April heeft dus \textbf{4} mensen de hand geschud.
+\end{enumerate}
+
+\begin{enumerate}[start=7]
+  \item Zeg van de volgende lijsten van getallen of het de graden kunnen zijn
+        van de toppen van een graaf. Zo ja, teken een graaf die eraan voldoet.
+
+        \begin{enumerate}
+          \item 2, 2, 2, 3
+          \item 2, 2, 4, 4, 4
+          \item 1, 2, 2, 3, 4
+          \item 1, 2, 3, 4
+        \end{enumerate}
+
+        \hrulefill
+
+        
+        \begin{enumerate}
+          \item 2, 2, 2, 3
+          
+                Handshake principe:
+                \[
+                  \sum_{v \in V(\mathcal{G})} \deg(v) = 2 | E(\mathcal{G}) |
+                \]
+
+                De som van de graden is dus altijd even. Hier is de som \(2 + 2 + 2 + 3 = 9\),
+                wat oneven is. Deze graaf kan dus niet bestaan.
+
+          \item 2, 2, 4, 4, 4
+          
+                De som van de toppen is even, dus daarmee kunnen we het al niet uitsluiten.
+
+                De drie toppen van graad 4 moeten elk verbonden zijn met de vier andere toppen, 
+                dus ook met de twee toppen van graad 2. Die zouden dus minstens graad 3 moeten hebben.
+
+                Deze graaf kan dus niet bestaan.
+
+          \item 1, 2, 2, 3, 4
+          
+                De som van de toppen is even, dus daarmee kunnen we het al niet uitsluiten.
+
+                \begin{center}
+                \begin{tikzpicture}
+                  \node[circle, fill=black, inner sep=2pt, label=90:4] (n4) at (90:1.5) {};
+                  \node[circle, fill=black, inner sep=2pt, label=18:3] (n3) at (18:1.5) {};
+                  \node[circle, fill=black, inner sep=2pt, label=-54:2] (n2b) at (-54:1.5) {};
+                  \node[circle, fill=black, inner sep=2pt, label=-126:2] (n2) at (-126:1.5) {};
+                  \node[circle, fill=black, inner sep=2pt, label=162:1] (n1) at (162:1.5) {};
+
+                  \draw (n4) -- (n1);
+                  \draw (n4) -- (n2);
+                  \draw (n4) -- (n2b);
+                  \draw (n4) -- (n3);
+                  
+                  \draw (n3) -- (n2);
+                  \draw (n3) -- (n2b);
+                  \draw (n3) -- (n4);
+                  
+                \end{tikzpicture}
+                \end{center}
+
+                Deze graaf is dus mogelijk.
+                
+          \item 1, 2, 3, 4
+          
+                De som van de toppen is even, dus daarmee kunnen we het al niet uitsluiten.
+
+                Deze graaf kan niet bestaan om 2 redenen:
+
+                \begin{enumerate}
+                  \item een graaf waarvan de toppen alle een verschillende graad hebben,
+                        kan niet bestaan;
+                  \item de top met graad 4 moet met 4 andere toppen verbonden worden, maar er zijn 
+                        slechts 3 andere toppen.
+                \end{enumerate}
+                
+                
+        \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[start=11]
+  \item Toon aan: als \(\mathcal{G}\) een simpele graaf is met minstens 2 toppen, dan
+        heeft \(\mathcal{G}\) 2 toppen van dezelfde graad. 
+
+        \hrulefill
+
+        Een simpele graaf is een graaf zonder lussen.
+
+        Voor een graaf met \(n\) toppen, ligt de graad van de toppen tussen
+
+        \[ 0 \le \deg(v) \le n - 1\]
+
+        Dat zijn \(n\) verschillende mogelijkheden. Het duiventilprincipe kan dus niet
+        toegepast worden.
+
+        Maar: als elke top een andere graad heeft, zal elk van de graden precies één 
+        keer moeten voorkomen.
+      
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt, label=90:$n - 1$] (nm1) at (90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=54:$\dots$] (ndots) at (54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=18:7] (n7) at (18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-18:6] (n6) at (-18:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-54:5] (n5) at (-54:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-90:4] (n4) at (-90:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-126:3] (n3) at (-126:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=-162:2] (n2) at (-162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=162:1] (n1) at (162:2.5) {};
+          \node[circle, fill=black, inner sep=2pt, label=126:0] (n0) at (126:2.5) {};
+        \end{tikzpicture}
+        \end{center}
+
+        \(n - 1\) mag niet met zichzelf verbonden zijn, en moet dus met al de andere 
+        toppen verbonden zijn, ook met \(0\). Dit is een tegenspraak.
+
+\end{enumerate}
+
+Een \textit{Eulergraf} bevat een gesloten pad dat elke \textbf{boog} precies één keer passeert.
+Deze graf mag ook nog andere bogen bevatten. Een graf (zonder geïsoleerde toppen) is een Eulergraf als:
+\begin{itemize}
+  \item de toppen allemaal een even graad hebben;
+  \item de graf samenhangend is.
+\end{itemize}
+
+De buitenste toppen van de laatste graf hebben graad 1:
+
+\begin{center}
+\begin{tikzpicture}
+  % First graph - square
+  \begin{scope}[xshift=0cm]
+    \node[circle, fill=black, inner sep=2pt] (a1) at (0,1) {};
+    \node[circle, fill=black, inner sep=2pt] (a2) at (1,1) {};
+    \node[circle, fill=black, inner sep=2pt] (a3) at (1,0) {};
+    \node[circle, fill=black, inner sep=2pt] (a4) at (0,0) {};
+    
+    \draw (0,1) -- (1,1) -- (1,0) -- (0,0) -- cycle;
+  \end{scope}
+
+  \begin{scope}[xshift=4cm]
+    \draw (0,1) -- (1,0.5) -- (2,1) -- (2,0) -- (1,0.5) -- (0,0) -- cycle;
+    
+    \node[circle, fill=black, inner sep=2pt] (c1) at (0,1) {};
+    \node[circle, fill=black, inner sep=2pt] (c2) at (1,0.5) {};
+    \node[circle, fill=black, inner sep=2pt] (c3) at (2,1) {};
+    \node[circle, fill=black, inner sep=2pt] (c4) at (2,0) {};
+    \node[circle, fill=black, inner sep=2pt] (c5) at (0,0) {};
+  \end{scope}
+
+  \begin{scope}[xshift=8cm]
+    \node at (1,-1) {geen};
+
+    % Draw edges from center to all outer nodes
+    \draw ($(1,0.5)+(0:0)$) -- ($(1,0.5)+(90:0.8)$);
+    \draw ($(1,0.5)+(0:0)$) -- ($(1,0.5)+(30:0.8)$);
+    \draw ($(1,0.5)+(0:0)$) -- ($(1,0.5)+(-30:0.8)$);
+    \draw ($(1,0.5)+(0:0)$) -- ($(1,0.5)+(-90:0.8)$);
+    \draw ($(1,0.5)+(0:0)$) -- ($(1,0.5)+(-150:0.8)$);
+    \draw ($(1,0.5)+(0:0)$) -- ($(1,0.5)+(150:0.8)$);
+    
+    % Draw nodes
+    \node[circle, fill=black, inner sep=2pt] at (1,0.5) {};
+    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(90:0.8)$) {};
+    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(30:0.8)$) {};
+    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(-30:0.8)$) {};
+    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(-90:0.8)$) {};
+    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(-150:0.8)$) {};
+    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(150:0.8)$) {};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+
+
+Een \textit{Hamiltongraf} bevat een gesloten pad dat elke \textbf{top} precies één keer passeert.
+Deze graf mag ook nog andere bogen bevatten.
+
+\begin{center}
+\begin{tikzpicture}
+  % First graph - square
+  \begin{scope}[xshift=0cm]
+    \node[circle, fill=black, inner sep=2pt] (a1) at (0,1) {};
+    \node[circle, fill=black, inner sep=2pt] (a2) at (1,1) {};
+    \node[circle, fill=black, inner sep=2pt] (a3) at (1,0) {};
+    \node[circle, fill=black, inner sep=2pt] (a4) at (0,0) {};
+    
+    \draw (0,1) -- (1,1) -- (1,0) -- (0,0) -- cycle;
+  \end{scope}
+  
+  % Second graph - pentagon with all diagonals
+  \begin{scope}[xshift=4cm]
+    \draw (-1,0.5) -- (0,1) -- (1,1) -- (2,0.5) -- (1,0) -- (0,0) -- cycle;
+    \draw (0,1) -- (1,0) -- (1,1) -- (0,0) -- cycle;
+    
+    \node[circle, fill=black, inner sep=2pt] (b1) at (-1,0.5) {};
+    \node[circle, fill=black, inner sep=2pt] (b2) at (0,1) {};
+    \node[circle, fill=black, inner sep=2pt] (b3) at (1,1) {};
+    \node[circle, fill=black, inner sep=2pt] (b4) at (2,0.5) {};
+    \node[circle, fill=black, inner sep=2pt] (b5) at (1,0) {};
+    \node[circle, fill=black, inner sep=2pt] (b6) at (0,0) {};
+  \end{scope}
+  
+  % Third graph - bowtie with label "geen"
+  \begin{scope}[xshift=8cm]
+    \node at (1,-0.5) {geen};
+    
+    \draw (0,1) -- (1,0.5) -- (2,1) -- (2,0) -- (1,0.5) -- (0,0) -- cycle;
+    
+    \node[circle, fill=black, inner sep=2pt] (c1) at (0,1) {};
+    \node[circle, fill=black, inner sep=2pt] (c2) at (1,0.5) {};
+    \node[circle, fill=black, inner sep=2pt] (c3) at (2,1) {};
+    \node[circle, fill=black, inner sep=2pt] (c4) at (2,0) {};
+    \node[circle, fill=black, inner sep=2pt] (c5) at (0,0) {};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[start=12]
+  \item 
+  
+        \begin{center}
+        \begin{tikzpicture}
+          % Draw edges first
+          % Front face
+          \draw (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+          % Back face
+          \draw (1,0.5) -- (3,0.5) -- (3,2.5) -- (1,2.5) -- cycle;
+          % Connecting edges
+          \draw (0,0) -- (1,0.5);
+          \draw (2,0) -- (3,0.5);
+          \draw (2,2) -- (3,2.5);
+          \draw (0,2) -- (1,2.5);
+
+          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                (0,0) -- (0,2);
+          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                (0,2) -- (1,2.5);
+          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                (1,2.5) -- (3,2.5);
+          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                (3,2.5) -- (2,2);
+          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                (2,2) -- (2,0);
+          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                (2,0) -- (3,0.5);
+          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                (3,0.5) -- (1,0.5);
+          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                (1,0.5) -- (0,0);
+          
+          
+          % Draw nodes on top
+          % Front face vertices
+          \node[circle, fill=black, inner sep=2pt] at (0,0) {};
+          \node[circle, fill=black, inner sep=2pt] at (2,0) {};
+          \node[circle, fill=black, inner sep=2pt] at (2,2) {};
+          \node[circle, fill=black, inner sep=2pt] at (0,2) {};
+          % Back face vertices
+          \node[circle, fill=black, inner sep=2pt] at (1,0.5) {};
+          \node[circle, fill=black, inner sep=2pt] at (3,0.5) {};
+          \node[circle, fill=black, inner sep=2pt] at (3,2.5) {};
+          \node[circle, fill=black, inner sep=2pt] at (1,2.5) {};
+        \end{tikzpicture}
+        \end{center}
+\end{enumerate}
+
+\begin{enumerate}[start=15]
+  \item Waar of onwaar?
+        \begin{enumerate}
+          \item Als een graaf een Eulercyclus heeft, dan heeft hij een even aantal bogen.
+          
+                Onwaar. Bij een driehoek hebben de toppen graad 2, maar zijn er een
+                oneven aantal bogen.
+                \begin{center}
+                \begin{tikzpicture}
+                  \draw (0,0) -- (1,1) -- (2,0) -- cycle;
+
+                  \node[circle, fill=black, inner sep=2pt] at (0,0) {};
+                  \node[circle, fill=black, inner sep=2pt] at (1,1) {};
+                  \node[circle, fill=black, inner sep=2pt] at (2,0) {};
+                \end{tikzpicture}
+                \end{center}
+
+          \item Zij \(\mathcal{G}\) een simpele graaf met 9 toppen en veronderstel dat de som
+                van alle graden minstens 27 is. Dan heeft \(\mathcal{G}\) een top met graad
+                minstens 4.
+
+                Volgens de Handshake-eigenschap, moet het totaal aantal graden even zijn.
+                De som moet dus minstens \textbf{28} zijn.
+
+                Het is een simpele graf, dus elke top kan met 0 tot en met 8 andere toppen
+                verbonden zijn. Dat zijn 9 mogelijkheden.
+
+                Als elke top met 3 andere toppen verbonden is, is het totaal \(3 \cdot 9 = 27\).
+                Het totaal aantal graden, moet echter even zijn. Een totaal van 28 kunnen we 
+                niet halen met een maximum van graad 3.
+
+                De uitspraak is dus waar.
+
+          \item Het aantal mensen dat een oneven aantal broers en zussen heeft, is even.
+          
+                Anders gesteld: het aantal toppen van oneven graad is even.
+
+                Handshake:
+                \begin{align*}
+                  &\sum_{v \in V(\mathcal{G})} \deg(v) \text{ is even}
+                  &\\[1em]
+                  &V(\mathcal{G}) = \underbrace{E}_\text{even graad} \cup \underbrace{O}_\text{oneven graad} \\
+                  &\underbrace{\sum_{v \in V(\mathcal{G})} \deg(v)}_\text{is even}
+                    = \underbrace{\sum_{v \in E} \deg(v) }_\text{som van even getallen is even}
+                      + \underbrace{\sum_{v \in O} \deg(v)}_\text{moet dus ook even zijn}
+                  %
+                \end{align*}
+                
+                De som van oneven getallen kan enkel even zijn als het aantal getallen even is.
+                Het aantal elementen in \(O\) moet dus even zijn.
+
+                De uitspraak is dus waar.
+                
+
+          \item Als een simpele graaf een Eulercyclus heeft, dan heeft hij ook een
+                Hamiltoncyclus.
+
+                \begin{center}
+                \begin{tikzpicture}
+
+                  \begin{scope}
+                    \draw (0,1) -- (1,0.5) -- (2,1) -- (2,0) -- (1,0.5) -- (0,0) -- cycle;
+                    
+                    \node[circle, fill=black, inner sep=2pt] (c1) at (0,1) {};
+                    \node[circle, fill=black, inner sep=2pt] (c2) at (1,0.5) {};
+                    \node[circle, fill=black, inner sep=2pt] (c3) at (2,1) {};
+                    \node[circle, fill=black, inner sep=2pt] (c4) at (2,0) {};
+                    \node[circle, fill=black, inner sep=2pt] (c5) at (0,0) {};
+                  \end{scope}
+
+                \end{tikzpicture}
+                \end{center}
+
+                Dit is een Eulergraf, maar geen Hamilotongraf. De uitspraak is dus niet waar.
+
+          \item Als een simpele graaf een Hamiltoncyclus heeft, dan heeft hij ook
+                een Eulercyclus.
+
+                \begin{center}
+                \begin{tikzpicture}
+                  % Draw edges first
+                  % Front face
+                  \draw (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+                  % Back face
+                  \draw (1,0.5) -- (3,0.5) -- (3,2.5) -- (1,2.5) -- cycle;
+                  % Connecting edges
+                  \draw (0,0) -- (1,0.5);
+                  \draw (2,0) -- (3,0.5);
+                  \draw (2,2) -- (3,2.5);
+                  \draw (0,2) -- (1,2.5);
+
+                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                        (0,0) -- (0,2);
+                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                        (0,2) -- (1,2.5);
+                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                        (1,2.5) -- (3,2.5);
+                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                        (3,2.5) -- (2,2);
+                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                        (2,2) -- (2,0);
+                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                        (2,0) -- (3,0.5);
+                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                        (3,0.5) -- (1,0.5);
+                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+                        (1,0.5) -- (0,0);
+                  
+                  
+                  % Draw nodes on top
+                  % Front face vertices
+                  \node[circle, fill=black, inner sep=2pt] at (0,0) {};
+                  \node[circle, fill=black, inner sep=2pt] at (2,0) {};
+                  \node[circle, fill=black, inner sep=2pt] at (2,2) {};
+                  \node[circle, fill=black, inner sep=2pt] at (0,2) {};
+                  % Back face vertices
+                  \node[circle, fill=black, inner sep=2pt] at (1,0.5) {};
+                  \node[circle, fill=black, inner sep=2pt] at (3,0.5) {};
+                  \node[circle, fill=black, inner sep=2pt] at (3,2.5) {};
+                  \node[circle, fill=black, inner sep=2pt] at (1,2.5) {};
+                \end{tikzpicture}
+                \end{center}
+                
+                Deze is wel een Hamiltongraf, maar geen Eulergraf.
+
+          \item In een reguliere graaf heeft elke top niet alleen hetzelfde aantal
+                buren maar ook hetzelfde aantal toppen op afstand 2.
+
+                De afstand is de lengte van het \textbf{kortste} pad tussen twee toppen.
+
+                Een reguliere graaf is een graaf waarbij alle toppen dezelfde graad hebben.
+
+                \begin{center}
+                \begin{tikzpicture}
+                  % First graph - square
+                  \begin{scope}[xshift=0cm]
+                    \node[circle, fill=black, inner sep=2pt] (a1) at (0,1) {};
+                    \node[circle, fill=black, inner sep=2pt] (a2) at (1,1) {};
+                    \node[circle, fill=black, inner sep=2pt] (a3) at (1,0) {};
+                    \node[circle, fill=black, inner sep=2pt] (a4) at (0,0) {};
+                    
+                    \draw (0,1) -- (1,1) -- (1,0) -- (0,0) -- cycle;
+                  \end{scope}
+
+                  \begin{scope}[xshift=4cm]
+                    \draw ($(1,0.5)+(90:0.8)$) -- ($(1,0.5)+(18:0.8)$) -- ($(1,0.5)+(-54:0.8)$) -- ($(1,0.5)+(-126:0.8)$) -- ($(1,0.5)+(162:0.8)$) -- cycle;
+                    
+                    % Draw nodes
+                    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(90:0.8)$) {};
+                    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(18:0.8)$) {};
+                    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(-54:0.8)$) {};
+                    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(-126:0.8)$) {};
+                    \node[circle, fill=black, inner sep=2pt] at ($(1,0.5)+(162:0.8)$) {};
+
+                  \end{scope}
+
+                \end{tikzpicture}
+                \end{center}
+                
+                Als we dit als één graf beschouwen, bestaande uit twee onsamenhangende componenten, 
+                dan hebben de toppen van het vierkant één top op afstand 2. De toppen van de vijfhoek 
+                hebben twéé toppen op afstand 2.
+
+                De uitspraak is dus onwaar.
+
+                Ook voor een samenhangende graf geldt dit:
+                \begin{center}
+                \begin{tikzpicture}
+                  \begin{scope}
+                    \draw (0,0) -- (0,1) 
+                      -- (1,2) 
+                      -- (2,1) -- (2,0)
+                      -- (1,-1)
+                      -- cycle;
+                    \draw (0,0) -- (2,0);
+                    \draw (0,1) -- (2,1);
+                    \draw (1,2) -- (1,-1);
+                    
+                    % Draw nodes
+                    \node[circle, fill=black, inner sep=2pt, label=left :4] at (0, 0) {};
+                    \node[circle, fill=black, inner sep=2pt, label=left :4] at (0, 1) {};
+                    \node[circle, fill=black, inner sep=2pt, label=right:4] at (2, 0) {};
+                    \node[circle, fill=black, inner sep=2pt, label=right:4] at (2, 1) {};
+                    \node[circle, fill=black, inner sep=2pt, label=below:2] at (1,-1) {};
+                    \node[circle, fill=black, inner sep=2pt, label=above:2] at (1, 2) {};
+
+                  \end{scope}
+
+                \end{tikzpicture}
+                \end{center}
+        \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[start=17]
+  \item Toon aan dat een Eulergraaf met een even aantal toppen die regulier
+        is steeds een even aantal bogen heeft.
+
+        
+        \begin{align*}
+          \sum_{v \in V(\mathcal{G})} \deg(v) 
+            &= 2 | E(\mathcal{G}) | \\
+          \underbrace{k+k+ \dots + k}_{V(\mathcal{G}) \text{ keer}} 
+            &= 2 | E(\mathcal{G}) | \\
+          k \cdot |V(\mathcal{G})| &= 2 | E(\mathcal{G}) | \\
+          | E(\mathcal{G}) | 
+            &= \frac{\overbrace{k}^{\text{even}} \cdot \overbrace{|V(\mathcal{G})|}^{\text{even}}}{2}  \\
+        \end{align*}
+
+        \(k\) is even, want een Eulergraaf bevat altijd toppen met een even graad.
+
+        \(|V(\mathcal{G})|\) is even, want we hebben een even aantal toppen.
+
+        Het product daarvan levert een even getal op. Dat delen door 2, levert terug een even getal op.
+        
+
+\end{enumerate}
+
+\begin{enumerate}[start=24]
+  \item Hoeveel toppen kan een samenhangende reguliere simpele graaf met 22 bogen hebben?
+  
+        \begin{align*}
+          \sum_{v \in V(\mathcal{G})} \deg(v) &= 2 | E(\mathcal{G}) | \\
+          \sum_{v \in V(\mathcal{G})} \deg(v) &= 2 \cdot 22 \\
+          \sum_{v \in V(\mathcal{G})} \deg(v) &= 44 \\
+                     k \cdot |V(\mathcal{G})| &= 44 \\
+                             |V(\mathcal{G})| &= \frac{44}{k}
+        \end{align*}
+
+        
+        \begin{itemize}
+          \item \(\cancel{1}\): in een simpele graaf zijn geen lussen mogelijk.
+          \item \(\cancel{2}\): parallelle bogen zijn ook niet toegestaan.
+          \item \(\cancel{4}\): elke top zou graad 11 moeten hebben, terwijl het maximum 3 is als we 
+                geen parallelle bogen hebben.
+          \item 11:
+                \begin{center}
+                \begin{tikzpicture}
+                  % Calculate positions for 11 nodes evenly distributed
+                  % Draw edges: each node connects to adjacent nodes and nodes at distance 5
+                  \foreach \i in {0,...,10} {
+                    \pgfmathsetmacro{\next}{int(mod(\i+1,11))}
+                    \pgfmathsetmacro{\jumptwo}{int(mod(\i+2,11))}
+                    \draw ({90-\i*360/11}:2) -- ({90-\next*360/11}:2);
+                    \draw ({90-\i*360/11}:2) .. controls ({90-\i*360/11}:1.3) and ({90-\jumptwo*360/11}:1.3) .. ({90-\jumptwo*360/11}:2);
+                  }
+                  
+                  % Draw nodes on top
+                  \foreach \i in {0,...,10} {
+                    \node[circle, fill=black, inner sep=2pt] at ({90-\i*360/11}:2) {};
+                  }
+                \end{tikzpicture}
+                \end{center}
+          \item 22: een cyclus van 22 toppen, verbonden met 22 bogen
+                \begin{center}
+                \begin{tikzpicture}
+                  % Draw edges: each node connects to adjacent nodes
+                  \foreach \i in {0,...,21} {
+                    \pgfmathsetmacro{\next}{int(mod(\i+1,22))}
+                    \draw ({90-\i*360/22}:2) -- ({90-\next*360/22}:2);
+                  }
+                  
+                  % Draw nodes on top
+                  \foreach \i in {0,...,21} {
+                    \node[circle, fill=black, inner sep=2pt] at ({90-\i*360/22}:2) {};
+                  }
+                \end{tikzpicture}
+                \end{center}
+          \item \(\cancel{44}\): 44 toppen van graad 1 zou niet samenhangend zijn.
+        \end{itemize}
+\end{enumerate}
+
+Als een graf met \(n\) toppen heeft van minstens graad \(\frac{n}{2}\), dan is het een Hamilotongraf.
+Is er een top met een kleinere graad, dan weten we niks. Dan kan het nog steeds een Hamilotongraf zijn,
+zoals \(C_{100}\): een cyclus van 100 toppen en 100 bogen heeft toppen van graad 2.
+
+Een graf is \textbf{niet} Hamilton als er een top te vinden is die er voor zorgt dat, als je dit top
+weg laat, de graf niet meer samenhangend is.
+
+\begin{center}
+\begin{tikzpicture}
+
+  \begin{scope}
+    \draw (0,1) -- (1,0.5) -- (2,1) -- (2,0) -- (1,0.5) -- (0,0) -- cycle;
+    
+    \node[circle, fill=black, inner sep=2pt] (c1) at (0,1) {};
+    \node[circle, fill=black, inner sep=2pt] (c2) at (1,0.5) {};
+    \node[circle, fill=black, inner sep=2pt] (c3) at (2,1) {};
+    \node[circle, fill=black, inner sep=2pt] (c4) at (2,0) {};
+    \node[circle, fill=black, inner sep=2pt] (c5) at (0,0) {};
+    
+    % Arrow pointing to c2 from upper right
+    \draw[->, thick] (2.5,1.5) .. controls (2.2,1.5) and (1.7,1.3) .. (1.05,0.75);
+  \end{scope}
+
+  \begin{scope}[xshift=2.5cm]
+    % Arrow pointing right
+    \draw[->, thick] (0,0.5) -- (1.5,0.5);
+  \end{scope}
+
+  \begin{scope}[xshift=4.5cm]
+    \draw (0,1) -- (0,0);
+    \draw (2,1) -- (2,0);
+    
+    \node[circle, fill=black, inner sep=2pt] (c1) at (0,1) {};
+    \node[circle, fill=black, inner sep=2pt] (c3) at (2,1) {};
+    \node[circle, fill=black, inner sep=2pt] (c4) at (2,0) {};
+    \node[circle, fill=black, inner sep=2pt] (c5) at (0,0) {};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+
+Zo ook, als er 2 toppen te vinden zijn die er voor zorgen dat de graf in 3 of meer
+componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+  \begin{scope}
+    % Define node positions
+    \node[circle, fill=black, inner sep=2pt, label=above:$a$] (a) at (0,3) {};
+    \node[circle, fill=black, inner sep=2pt, label=above:$b$] (b) at (1.5,3) {};
+    \node[circle, fill=black, inner sep=2pt, label=above:$c$] (c) at (2.5,3) {};
+    \node[circle, fill=black, inner sep=2pt, label=above:$d$] (d) at (7,3) {};
+    \node[circle, fill=black, inner sep=2pt, label=below:$e$] (e) at (7,0) {};
+    \node[circle, fill=black, inner sep=2pt, label=below:$f$] (f) at (2.5,0) {};
+    \node[circle, fill=black, inner sep=2pt, label=left :$g$] (g) at (1.5,1.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=below:$h$] (h) at (0.75,0) {};
+    \node[circle, fill=black, inner sep=2pt, label=left :$i$] (i) at (0,1.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=left :$j$] (j) at (2.5,1.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=right:$k$] (k) at (4,1.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=right:$l$] (l) at (5.5,2.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=right:$m$] (m) at (5,0.5) {};
+    
+    % Draw edges
+    \draw (a) -- (b);
+    \draw (a) -- (g);
+  s
+    \draw (b) -- (c);
+    \draw (b) -- (i);
+    \draw (b) -- (l);
+
+    \draw (c) -- (d);
+    \draw (c) -- (j);
+
+    \draw (d) -- (e);
+    \draw (d) -- (m);
+
+    \draw (e) -- (f);
+    \draw (e) -- (l);
+
+    \draw (f) -- (g);
+    \draw (f) -- (j);
+
+    \draw (g) -- (h);
+    \draw (g) -- (m);
+
+    \draw (h) -- (i);
+
+    \draw (j) -- (k);
+
+    \draw (k) -- (l);
+    \draw (k) -- (m);
+  \end{scope}
+
+  \begin{scope}[yshift=-4cm]
+    % Define node positions
+    \node[circle, fill=black, inner sep=2pt, label=above:$a$] (a) at (0,3) {};
+    \node[circle, fill=gray, inner sep=2pt, label=above:$b$] (b) at (1.5,3) {};
+    \node[circle, fill=black, inner sep=2pt, label=above:$c$] (c) at (2.5,3) {};
+    \node[circle, fill=black, inner sep=2pt, label=above:$d$] (d) at (7,3) {};
+    \node[circle, fill=black, inner sep=2pt, label=below:$e$] (e) at (7,0) {};
+    \node[circle, fill=black, inner sep=2pt, label=below:$f$] (f) at (2.5,0) {};
+    \node[circle, fill=gray, inner sep=2pt, label=left :$g$] (g) at (1.5,1.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=below:$h$] (h) at (0.75,0) {};
+    \node[circle, fill=black, inner sep=2pt, label=left :$i$] (i) at (0,1.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=left :$j$] (j) at (2.5,1.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=right:$k$] (k) at (4,1.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=right:$l$] (l) at (5.5,2.5) {};
+    \node[circle, fill=black, inner sep=2pt, label=right:$m$] (m) at (5,0.5) {};
+    
+    % Draw edges
+    \draw[gray!50, dashed] (a) -- (b);
+    \draw[gray!50, dashed] (a) -- (g);
+  s
+    \draw[gray!50, dashed] (b) -- (c);
+    \draw[gray!50, dashed] (b) -- (i);
+    \draw[gray!50, dashed] (b) -- (l);
+
+    \draw (c) -- (d);
+    \draw (c) -- (j);
+
+    \draw (d) -- (e);
+    \draw (d) -- (m);
+
+    \draw (e) -- (f);
+    \draw (e) -- (l);
+
+    \draw[gray!50, dashed] (f) -- (g);
+    \draw (f) -- (j);
+
+    \draw[gray!50, dashed] (g) -- (h);
+    \draw[gray!50, dashed] (g) -- (m);
+
+    \draw (h) -- (i);
+
+    \draw (j) -- (k);
+
+    \draw (k) -- (l);
+    \draw (k) -- (m);
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+
+
+\end{document}
