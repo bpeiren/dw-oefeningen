@@ -7,12 +7,20 @@
 \usepackage{siunitx}
 \usepackage{enumitem}
 \usepackage{geometry}
+\geometry{margin=2.5cm}
 \usepackage{hyperref}
 \usepackage{csquotes}
-\geometry{margin=2.5cm}
 \usepackage{mathtools} % For underbracket
 \usepackage{tikz}
-\usetikzlibrary{decorations.markings, calc}
+\usetikzlibrary{decorations.markings} % marking arrows
+\usetikzlibrary{calc} % For coordinate calculations
+
+\tikzset{
+  pad-pijl/.style={
+    ultra thick,
+    postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}
+  }
+}
 \usepackage{float} % For figure placement with [H]
 \usepackage{needspace}
 \usepackage[most]{tcolorbox}
@@ -33,6 +41,6 @@
 \subfile{hoofdstukken/1-Inleidende_begrippen}
 \subfile{hoofdstukken/2-Eenvoudige_principes_van_discrete_wiskunde}
 \subfile{hoofdstukken/3-Gehele_getallen}
-\subfile{hoofdstukken/4-Inleiding tot de grafentheorie}
+\subfile{hoofdstukken/4-Inleiding_tot_de_grafentheorie}
 
 \end{document}

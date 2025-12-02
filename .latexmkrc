@@ -1,5 +1,5 @@
 # Use xelatex for processing
-$pdflatex = 'xelatex -synctex=1 -interaction=nonstopmode -file-line-error %O %S';
+$pdflatex = 'xelatex -synctex=1 -shell-escape -interaction=nonstopmode -file-line-error %O %S';
 
 # Use biber instead of bibtex
 $bibtex = 'biber %O %B';

@@ -439,22 +439,14 @@ Deze graf mag ook nog andere bogen bevatten.
           \draw (2,2) -- (3,2.5);
           \draw (0,2) -- (1,2.5);
 
-          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                (0,0) -- (0,2);
-          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                (0,2) -- (1,2.5);
-          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                (1,2.5) -- (3,2.5);
-          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                (3,2.5) -- (2,2);
-          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                (2,2) -- (2,0);
-          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                (2,0) -- (3,0.5);
-          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                (3,0.5) -- (1,0.5);
-          \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                (1,0.5) -- (0,0);
+          \draw[pad-pijl] (0,0) -- (0,2);
+          \draw[pad-pijl] (0,2) -- (1,2.5);
+          \draw[pad-pijl] (1,2.5) -- (3,2.5);
+          \draw[pad-pijl] (3,2.5) -- (2,2);
+          \draw[pad-pijl] (2,2) -- (2,0);
+          \draw[pad-pijl] (2,0) -- (3,0.5);
+          \draw[pad-pijl] (3,0.5) -- (1,0.5);
+          \draw[pad-pijl] (1,0.5) -- (0,0);
           
           
           % Draw nodes on top
@@ -563,22 +555,14 @@ Deze graf mag ook nog andere bogen bevatten.
                   \draw (2,2) -- (3,2.5);
                   \draw (0,2) -- (1,2.5);
 
-                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                        (0,0) -- (0,2);
-                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                        (0,2) -- (1,2.5);
-                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                        (1,2.5) -- (3,2.5);
-                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                        (3,2.5) -- (2,2);
-                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                        (2,2) -- (2,0);
-                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                        (2,0) -- (3,0.5);
-                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                        (3,0.5) -- (1,0.5);
-                  \draw[ultra thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
-                        (1,0.5) -- (0,0);
+                  \draw[pad-pijl] (0,0) -- (0,2);
+                  \draw[pad-pijl] (0,2) -- (1,2.5);
+                  \draw[pad-pijl] (1,2.5) -- (3,2.5);
+                  \draw[pad-pijl] (3,2.5) -- (2,2);
+                  \draw[pad-pijl] (2,2) -- (2,0);
+                  \draw[pad-pijl] (2,0) -- (3,0.5);
+                  \draw[pad-pijl] (3,0.5) -- (1,0.5);
+                  \draw[pad-pijl] (1,0.5) -- (0,0);
                   
                   
                   % Draw nodes on top
@@ -668,7 +652,6 @@ Deze graf mag ook nog andere bogen bevatten.
 \begin{enumerate}[start=17]
   \item Toon aan dat een Eulergraaf met een even aantal toppen die regulier
         is steeds een even aantal bogen heeft.
-
         
         \begin{align*}
           \sum_{v \in V(\mathcal{G})} \deg(v) 
@@ -686,10 +669,52 @@ Deze graf mag ook nog andere bogen bevatten.
 
         Het product daarvan levert een even getal op. Dat delen door 2, levert terug een even getal op.
         
+  % Oefening 18
+  \item Zij \(\mathcal{G}\) een simpele graaf met 10 toppen en 28 bogen. Toon aan dat \(\mathcal{G}\)
+        een cyclus van lengte vier bevat.
+
+        \begin{align*}
+          \sum_{v \in V(\mathcal{G})} deg(v) &= 2 | E(\mathcal{G}) | \\
+                                             &= 2 \cdot 28 = 56     
+        \end{align*}
+
+        Als alle toppen graad 5 zouden hebben, zouden er niet genoeg bogen kunnen zijn.
+        \begin{align*}
+          10 \cdot 5 &= 56 \\
+                  50 &= 56 \\
+        \end{align*}
+
+        Er moet dus minstens één top zijn van graad 6, maar zelfs dan is het totaal van
+        de graden nog niet genoeg.
+        \begin{align*}
+          9 \cdot 5 + 6 &= 56 \\
+                 45 + 6 &= 56 \\
+                     51 &= 56 \\
+        \end{align*}
+        
+        Er moeten dus minstens twee toppen van graad 6 zijn.
+        \begin{align*}
+          9 \cdot 5 + 2 \cdot 6 &= 56 \\
+                        45 + 12 &= 56 \\
+                             57 &= 56 \\
+        \end{align*}
+        
+        Stel dat er twee toppen zijn waar elk vijf bogen uit vertrekken. Aangezien er 10 toppen in totaal 
+        zijn, kunnen er vanuit de twee toppen naar slechts 8 andere toppen bogen aan.
+        Vanuit de eerste top vertrekken er dan 5 bogen naar 5 toppen. Er blijven dan nog
+        3 toppen over. Als er vanuit de tweede top 5 bogen vertrekken, zitten daar dus 
+        sowieso toppen tussen waarnaar al een pijl gaat vanuit de eerste top.
+
+        Als die twee toppen dan ook onderling verbonden zijn, moeten ze een graad van
+        minstens 6 hebben.
+
+        De cyclus wordt dan gevormd door de 2 toppen en de 2 dubbele toppen waarnaar
+        bogen gaan.
 
 \end{enumerate}
 
 \begin{enumerate}[start=24]
+  % Oefening 24
   \item Hoeveel toppen kan een samenhangende reguliere simpele graaf met 22 bogen hebben?
   
         \begin{align*}
@@ -886,5 +911,620 @@ componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
 \end{tikzpicture}
 \end{center}
 
+\begin{enumerate}[start=25]
+  \item Toon aan dat de Petersengraaf geen Hamiltoncyclus, maar wel een
+        Hamiltonpad heeft. Toon aan dat, als je 1 top en de incidente bogen
+        verwijdert uit de graf, er wel een Hamiltoncyclus is.
+
+        \begin{center}
+        \begin{tikzpicture}[scale=2]
+          \begin{scope}
+            % Outer pentagon vertices
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (outer\i) at ({90+\i*72}:1) {};
+            }
+            
+            % Inner pentagon vertices (star pattern)
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (inner\i) at ({90+\i*72}:0.5) {};
+            }
+            
+            % Outer pentagon edges
+            \foreach \i in {0,...,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+1,5))}
+              \draw (outer\i) -- (outer\next);
+            }
+            
+            % Inner star edges (each vertex connects to vertex +2 mod 5)
+            \foreach \i in {0,...,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+2,5))}
+              \draw (inner\i) -- (inner\next);
+            }
+            
+            % Spokes connecting outer to inner
+            \foreach \i in {0,...,4} {
+              \draw (outer\i) -- (inner\i);
+            }
+          \end{scope}
+        \end{tikzpicture}
+        \end{center}
+
+        Eigenschappen:
+        \begin{itemize}
+          \item elke top is 3-regulier
+          \item het kortste pad heeft lengte 5
+          \item 10 toppen
+        \end{itemize}
+
+        Bewering: er is geen graf die aan deze drie eigenschappen voldoet en een cyclus heeft.
+
+        Als we een cyclus proberen te vervolledigen, komen we snel in de problemen.
+
+        \begin{enumerate}
+          \item De eerste rechte moet 4 toppen verder liggen, zodat er een lus van 5 gevormd wordt.
+                De kleinste lus moet immers 5 zijn.
+          \item Vanuit dat punt trekken we een nieuwe rechte naar 4 toppen verder. De twee rechten
+                vormen samen met de tussenliggende top echter een nieuwe kortste lus van 4, wat
+                niet mag.
+        \end{enumerate}
+        
+        \begin{center}
+        \begin{tikzpicture}[scale=2]
+          \begin{scope}[xshift=3cm]
+            % Draw the circle
+            \draw (0,0) circle (1);
+            
+            % 10 nodes evenly distributed on a circle
+            \foreach \i in {0,...,9} {
+              \node[circle, fill=black, inner sep=2pt] (n\i) at ({90-\i*36}:1) {};
+            }
+
+            \draw (n0) -- (n4);
+            \draw (n4) -- (n8);
+          \end{scope}
+        \end{tikzpicture}
+        \end{center}
+         
+        \begin{center}
+        \begin{tikzpicture}[scale=2]
+            \begin{scope}
+            % Outer pentagon vertices
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (outer\i) at ({90+\i*72}:1) {};
+            }
+            
+            % Inner pentagon vertices (star pattern)
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (inner\i) at ({90+\i*72}:0.5) {};
+            }
+            
+            % Outer pentagon edges
+            \foreach \i in {0,...,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+1,5))}
+              \draw (outer\i) -- (outer\next);
+            }
+            
+            % Inner star edges (each vertex connects to vertex +2 mod 5)
+            \foreach \i in {0,...,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+2,5))}
+              \draw (inner\i) -- (inner\next);
+            }
+            
+            % Spokes connecting outer to inner
+            \foreach \i in {0,...,4} {
+              \draw (outer\i) -- (inner\i);
+            }
+
+            \draw[pad-pijl] (outer0) -- (outer1);
+            \draw[pad-pijl] (outer1) -- (outer2);
+            \draw[pad-pijl] (outer2) -- (outer3);
+            \draw[pad-pijl] (outer3) -- (outer4);
+            \draw[pad-pijl] (outer4) -- (inner4);
+            \draw[pad-pijl] (inner4) -- (inner2);
+            \draw[pad-pijl] (inner2) -- (inner0);
+            \draw[pad-pijl] (inner0) -- (inner3);
+            \draw[pad-pijl] (inner3) -- (inner1);
+          \end{scope}
+
+          \begin{scope}[xshift=2.5cm]
+            % Outer pentagon vertices
+            \foreach \i in {1,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (outer\i) at ({90+\i*72}:1) {};
+            }
+            
+            % Inner pentagon vertices (star pattern)
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (inner\i) at ({90+\i*72}:0.5) {};
+            }
+            
+            % Outer pentagon edges
+            \foreach \i in {1,...,3} {
+              \pgfmathsetmacro{\next}{int(mod(\i+1,5))}
+              \draw (outer\i) -- (outer\next);
+            }
+            
+            % Inner star edges (each vertex connects to vertex +2 mod 5)
+            \foreach \i in {0,...,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+2,5))}
+              \draw (inner\i) -- (inner\next);
+            }
+            
+            % Spokes connecting outer to inner
+            \foreach \i in {1,...,4} {
+              \draw (outer\i) -- (inner\i);
+            }
+
+            % removed
+            \node[circle, fill=gray!50, inner sep=2pt] (outer0) at (90:1) {};
+            \draw[gray!50] (outer0) -- (outer1);
+            \draw[gray!50] (outer0) -- (outer4);
+            \draw[gray!50] (outer0) -- (inner0);
+
+            
+            \draw[pad-pijl] (outer1) -- (outer2);
+            \draw[pad-pijl] (outer2) -- (outer3);
+            \draw[pad-pijl] (outer3) -- (outer4);
+            \draw[pad-pijl] (outer4) -- (inner4);
+            \draw[pad-pijl] (inner4) -- (inner2);
+            \draw[pad-pijl] (inner2) -- (inner0);
+            \draw[pad-pijl] (inner0) -- (inner3);
+            \draw[pad-pijl] (inner3) -- (inner1);
+            \draw[pad-pijl] (inner1) -- (outer1);
+          \end{scope}
+
+          \begin{scope}[xshift=5cm]
+            % Outer pentagon vertices
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (outer\i) at ({90+\i*72}:1) {};
+            }
+            
+            % Inner pentagon vertices (star pattern)
+            \foreach \i in {1,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (inner\i) at ({90+\i*72}:0.5) {};
+            }
+            
+            \node[circle, fill=gray!50, inner sep=2pt] (inner0) at (90:0.5) {};
+
+            % Outer pentagon edges
+            \foreach \i in {0,...,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+1,5))}
+              \draw (outer\i) -- (outer\next);
+            }
+            
+            % Inner star edges (each vertex connects to vertex +2 mod 5)
+            \foreach \i in {1,2,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+2,5))}
+              \draw (inner\i) -- (inner\next);
+            }
+            
+            % Spokes connecting outer to inner
+            \foreach \i in {1,...,4} {
+              \draw (outer\i) -- (inner\i);
+            }
+
+            % removed
+            \draw[gray!50] (outer0) -- (inner0);
+            \draw[gray!50] (inner0) -- (inner2);
+            \draw[gray!50] (inner0) -- (inner3);
+
+            
+            \draw[pad-pijl] (inner2) -- (inner4);
+            \draw[pad-pijl] (inner4) -- (inner1);
+            \draw[pad-pijl] (inner1) -- (inner3);
+            \draw[pad-pijl] (inner3) -- (outer3);
+            \draw[pad-pijl] (outer3) -- (outer4);
+            \draw[pad-pijl] (outer4) -- (outer0);
+            \draw[pad-pijl] (outer0) -- (outer1);
+            \draw[pad-pijl] (outer1) -- (outer2);
+            \draw[pad-pijl] (outer2) -- (inner2);
+          \end{scope}
+        \end{tikzpicture}
+        \end{center}
+
+        
+        In de linker figuur, hebben we een open Hamiltonpad. Door 1 top te verwijderen,
+        hebben we een gesloten pad, en dus een Hamiltoncyclus.
+\end{enumerate}
+
+\begin{tcolorbox}[title=Ter herinnering]
+  Bij bomen:
+  \[ |E(\mathcal{G})| = |V(\mathcal{G})| - 1\]
+\end{tcolorbox}
+
+\begin{enumerate}[start=29]
+  \item Teken alle niet-isomorfe bomen met zes toppen
+        \begin{center}
+          \begin{tikzpicture}
+            % Tree 1: Path graph (6 nodes in a line)
+            \begin{scope}[xshift=0cm]
+              \foreach \i in {0,...,5} {
+                \node[circle, fill=black, inner sep=2pt] (n\i) at (\i*0.8,0) {};
+              }
+              \foreach \i in {0,...,4} {
+                \pgfmathsetmacro{\next}{int(\i+1)}
+                \draw (n\i) -- (n\next);
+              }
+            \end{scope}
+
+            % Tree 2: Path with one branch at end
+            \begin{scope}[xshift=6cm]
+              \foreach \i in {0,...,3} {
+                \node[circle, fill=black, inner sep=2pt] (n\i) at (\i*0.8,0) {};
+              }
+              \node[circle, fill=black, inner sep=2pt] (n4) at (3.2, 0.8) {};
+              \node[circle, fill=black, inner sep=2pt] (n5) at (3.2,-0.8) {};
+              
+              \foreach \i in {0,...,2} {
+                \pgfmathsetmacro{\next}{int(\i+1)}
+                \draw (n\i) -- (n\next);
+              }
+              \draw (n3) -- (n4);
+              \draw (n3) -- (n5);
+            \end{scope}
+
+            % Tree 3: Path with branch in middle
+            \begin{scope}[yshift=-2cm, xshift=0cm]
+              \foreach \i in {0,...,4} {
+                \node[circle, fill=black, inner sep=2pt] (n\i) at (\i*0.8,0) {};
+              }
+              \node[circle, fill=black, inner sep=2pt] (n5) at (1.6,0.8) {};
+              
+              \foreach \i in {0,...,3} {
+                \pgfmathsetmacro{\next}{int(\i+1)}
+                \draw (n\i) -- (n\next);
+              }
+              \draw (n2) -- (n5);
+            \end{scope}
+
+            % Tree 4: Y-shape (one node with 3 branches)
+            \begin{scope}[yshift=-2cm, xshift=6cm]
+              \node[circle, fill=black, inner sep=2pt] (n1) at (0,-0.8) {};
+              \node[circle, fill=black, inner sep=2pt] (n2) at (0, 0.8) {};
+              \node[circle, fill=black, inner sep=2pt] (n3) at (0.8,0) {};
+              \node[circle, fill=black, inner sep=2pt] (n4) at (1.6,0) {};
+              \node[circle, fill=black, inner sep=2pt] (n5) at (2.4,-0.8) {};
+              \node[circle, fill=black, inner sep=2pt] (n6) at (2.4,0.8) {};
+              
+              \draw (n1) -- (n3);
+              \draw (n2) -- (n3);
+              \draw (n3) -- (n4);
+              \draw (n4) -- (n5);
+              \draw (n4) -- (n6);
+            \end{scope}
+
+            % Tree 5: Star graph (one center with 5 branches)
+            \begin{scope}[yshift=-4cm, xshift=2cm]
+              \node[circle, fill=black, inner sep=2pt] (center) at (0,0) {};
+              \foreach \i in {0,...,4} {
+                \node[circle, fill=black, inner sep=2pt] (n\i) at ({90+\i*72}:0.8) {};
+                \draw (center) -- (n\i);
+              }
+            \end{scope}
+
+            % Tree 6: Cross graph
+            \begin{scope}[yshift=-4cm, xshift=6cm]
+              \foreach \i in {0,...,3} {
+                \node[circle, fill=black, inner sep=2pt] (n\i) at (\i*0.8,0) {};
+              }
+              \node[circle, fill=black, inner sep=2pt] (n4) at (0.8,-0.8) {};
+              \node[circle, fill=black, inner sep=2pt] (n5) at (0.8, 0.8) {};
+              
+              \foreach \i in {0,...,2} {
+                \pgfmathsetmacro{\next}{int(\i+1)}
+                \draw (n\i) -- (n\next);
+              }
+              \draw (n1) -- (n4);
+              \draw (n1) -- (n5);
+
+            \end{scope}
+          \end{tikzpicture}
+        \end{center}
+\end{enumerate}
+
+\begin{enumerate}[start=34]
+  \item Zoek 2 niet-isomorfe opspannende bomen voor de complete bipartiete
+        graaf \(K_{2,3}\). Hoeveel niet-isomorfe opspannende bomen heeft deze graf?
+
+        \begin{figure}[H]
+          \centering
+          \begin{tikzpicture}
+            \begin{scope}[xshift=0cm]
+              \node[circle, fill=black, inner sep=2pt] (n0) at (0,0) {};
+              \node[circle, fill=black, inner sep=2pt] (n1) at (1,1) {};
+              \node[circle, fill=black, inner sep=2pt] (n2) at (2,0) {};
+              \node[circle, fill=black, inner sep=2pt] (n3) at (3,1) {};
+              \node[circle, fill=black, inner sep=2pt] (n4) at (4,0) {};
+              
+              \draw (n0) -- (n1);
+              \draw (n0) -- (n3);
+              \draw (n2) -- (n1);
+              \draw (n2) -- (n3);
+              \draw (n4) -- (n1);
+              \draw (n4) -- (n3);
+            \end{scope}
+          \end{tikzpicture}
+          \caption{\(K_{2,3}\)}
+        \end{figure}
+
+        We mogen enkel bogen weglaten, geen toppen.
+
+        \begin{figure}[H]
+          \centering
+          \begin{tikzpicture}
+            \begin{scope}[xshift=0cm]
+              \node[circle, fill=black, inner sep=2pt] (n0) at (0,0) {};
+              \node[circle, fill=black, inner sep=2pt] (n1) at (1,1) {};
+              \node[circle, fill=black, inner sep=2pt] (n2) at (2,0) {};
+              \node[circle, fill=black, inner sep=2pt] (n3) at (3,1) {};
+              \node[circle, fill=black, inner sep=2pt] (n4) at (4,0) {};
+              
+              \draw (n0) -- (n1);
+              \draw (n2) -- (n1);
+              \draw (n2) -- (n3);
+              \draw (n4) -- (n3);
+            \end{scope}
+            
+            \begin{scope}[xshift=5cm]
+              \node[circle, fill=black, inner sep=2pt] (n0) at (0,0) {};
+              \node[circle, fill=black, inner sep=2pt] (n1) at (1,1) {};
+              \node[circle, fill=black, inner sep=2pt] (n2) at (2,0) {};
+              \node[circle, fill=black, inner sep=2pt] (n3) at (3,1) {};
+              \node[circle, fill=black, inner sep=2pt] (n4) at (4,0) {};
+              
+              \draw (n0) -- (n1);
+              \draw (n2) -- (n1);
+              \draw (n4) -- (n1);
+              \draw (n4) -- (n3);
+            \end{scope}
+          \end{tikzpicture}
+        \end{figure}
+\end{enumerate}
+
+\begin{tcolorbox}[title=Ter herinnering]
+  Wat is een eindige 2-reguliere graf?
+  
+  Elke cyclus geeft ons een eindige 2-reguliere graf.   Niet elke 2-reguliere graf is een cyclus, bvb. een gaf bestaande uit meerdere samenhangscomponenten.
+
+  Een eindige 2-reguliere graf is een graf waarin elke samenhangscomponent een cyclus is.
+\end{tcolorbox}
+
+\begin{enumerate}[start=37]
+  \item Aan een toernooi doen \(2n\) ploegen mee. Er zijn al twee ronden
+        gespeeld. Toon aan dat we de ploegen nog altijd in twee groepen van
+        \(n\) ploegen kunnen verdelen, zodat ploegen van eenzelfde groep nog niet
+        tegen elkaar gespeeld hebben.
+
+        \(\mathcal{G}\):
+
+        \(V(\mathcal{G}) = \) \{ploegen\}
+
+        \(E(\mathcal{G}) = \{p \sim q \mid p, q \in V(\mathcal{G})\) zodat \(p\) reeds tegen \(q\)
+        gespeeld heeft \(\}\)
+
+        \(\mathcal{G}\) is 2-regulier, aangezien elke ploeg 2 wedstrijden heeft gespeeld. Alle 
+        samenhangscomponenten van \(\mathcal{G}\) zijn dus cycli.
+
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+          % Define the nodes in a circular pattern
+          \node[circle, fill=black, inner sep=2pt] (n1) at (90:2) {};
+          \node[circle, draw=black, inner sep=2pt] (n2) at (45:2) {};
+          \node[circle, fill=black, inner sep=2pt] (n3) at (0:2) {};
+          \node[circle, draw=black, inner sep=2pt] (n4) at (-45:2) {};
+          \node[circle, fill=black, inner sep=2pt] (n5) at (-90:2) {};
+          \node[circle, draw=black, inner sep=2pt] (n6) at (-135:2) {};
+          \node[circle, fill=black, inner sep=2pt] (n7) at (180:2) {};
+          \node[circle, draw=black, inner sep=2pt] (n8) at (135:2) {};
+          
+          % Draw edges forming the cycle with bends to create a perfect circle
+          \draw (n1) to[bend left=11.25] node[midway, above right] {ronde 1} (n2);
+          \draw (n2) to[bend left=11.25] node[midway, right] {ronde 2} (n3);
+          \draw (n3) to[bend left=11.25] node[midway, below right] {ronde 1} (n4) ;
+          \draw (n4) to[bend left=11.25] node[midway, below right] {ronde 2} (n5) ;
+          \draw (n5) to[bend left=11.25] node[midway, below left] {ronde 1} (n6) ;
+          \draw (n6) to[bend left=11.25] node[midway, left] {ronde 2} (n7) ;
+          \draw (n7) to[bend left=11.25] node[midway, above left] {ronde 1} (n8) ;
+          
+          % Dashed edge
+          \draw[dashed] (n8) to[bend left=11.25] node[midway, above left] {ronde 2} (n1);
+        \end{tikzpicture}
+        \end{center}
+
+        Alle samenhangscomponenten moeten een even aantal toppen hebben. Anders zou er 
+        een ploeg zijn die twee keer in dezelfde ronde heeft gespeeld, wat niet kan.
+
+        We kunnen de toppen dus alternerend aan een groep toevoegen. Deze ploegen hebben
+        dan niet tegen elkaar gespeeld.
+
+\end{enumerate}
+
+\begin{enumerate}[start=56]
+  \item Bepaal een opspannende boom van minimaal gewicht voor onder-
+        staande graaf. Hoeveel opspannende bomen heeft deze graf?
+
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt, label=left:d] (d)  at (0,2) {};
+
+          \node[circle, fill=black, inner sep=2pt, label=above:a] (a)  at (2,4) {};
+          \node[circle, fill=black, inner sep=2pt, label=below:h] (h)  at (2,0) {};
+          
+          \node[circle, fill=black, inner sep=2pt, label=above:e] (e)  at (4,2) {};
+
+          \node[circle, fill=black, inner sep=2pt, label=above:b] (b) at (6,4) {};
+          
+          \node[circle, fill=black, inner sep=2pt, label=above:f] (f) at (8,2) {};
+          
+          \node[circle, fill=black, inner sep=2pt, label=above:c] (c) at (10,4) {};
+          \node[circle, fill=black, inner sep=2pt, label=below:i] (i) at (10,0) {};
+          
+          \node[circle, fill=black, inner sep=2pt, label=right:g] (g) at (12,2) {};
+          
+          \draw (d) -- (a) node[midway, above] {14};
+          \draw (d) -- (e) node[midway, above] {7};
+          \draw (d) -- (h) node[midway, below] {15};
+
+          \draw (a) -- (b) node[midway, left] {5};
+          \draw (a) -- (e) node[midway, above] {4};
+          \draw (h) -- (e) node[midway, left] {1};
+          \draw (h) -- (i) node[midway, left] {10};
+                
+          \draw (e) -- (b) node[midway, above] {9};
+          \draw (e) -- (f) node[midway, above] {12};
+
+          \draw (b) -- (c) node[midway, above] {11};
+          \draw (b) -- (f) node[midway, above] {6};
+
+          \draw (f) -- (c) node[midway, below left] {2};
+          \draw (f) -- (g) node[midway, below left] {13};
+          \draw (f) -- (i) node[midway, below left] {8};
+          
+          \draw (c) -- (g) node[midway, left] {3};
+          \draw (i) -- (g) node[midway, left] {10};
+        \end{tikzpicture}
+        \end{center}
+        
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt, label=left:d] (d)  at (0,2) {};
+
+          \node[circle, fill=black, inner sep=2pt, label=above:a] (a)  at (2,4) {};
+          \node[circle, fill=black, inner sep=2pt, label=below:h] (h)  at (2,0) {};
+          
+          \node[circle, fill=black, inner sep=2pt, label=above:e] (e)  at (4,2) {};
+
+          \node[circle, fill=black, inner sep=2pt, label=above:b] (b) at (6,4) {};
+          
+          \node[circle, fill=black, inner sep=2pt, label=above:f] (f) at (8,2) {};
+          
+          \node[circle, fill=black, inner sep=2pt, label=above:c] (c) at (10,4) {};
+          \node[circle, fill=black, inner sep=2pt, label=below:i] (i) at (10,0) {};
+          
+          \node[circle, fill=black, inner sep=2pt, label=right:g] (g) at (12,2) {};
+          
+          \draw (d) -- (e) node[midway, above] {7} node[midway, right] {\textcolor{blue}{7}};
+
+          \draw (a) -- (b) node[midway, left] {5} node[midway, right] {\textcolor{blue}{5}};
+          \draw (a) -- (e) node[midway, above] {4} node[midway, right] {\textcolor{blue}{4}};
+          \draw (h) -- (e) node[midway, left] {1} node[midway, right] {\textcolor{blue}{1}};
+                
+          \draw (b) -- (f) node[midway, above] {6} node[midway, right] {\textcolor{blue}{6}};
+
+          \draw (f) -- (c) node[midway, below left] {2} node[midway, right] {\textcolor{blue}{2}};
+          \draw (f) -- (i) node[midway, below left] {8} node[midway, right] {\textcolor{blue}{8}};
+          
+          \draw (c) -- (g) node[midway, left] {3} node[midway, right] {\textcolor{blue}{3}};
+        \end{tikzpicture}
+        \end{center}
+
+        Gewicht: 36.
+\end{enumerate}
+
+\begin{enumerate}[start=58]
+  \item Vind een opspannende boom met minimaal gewicht in volgende graaf.
+        Geef ook zijn gewicht en de volgorde in dewelke je de bogen vindt.
+
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt] (n1)  at (0,2) {};
+
+          \node[circle, fill=black, inner sep=2pt] (n2)  at (2,0) {};
+          \node[circle, fill=black, inner sep=2pt] (n3)  at (2,2) {};
+          \node[circle, fill=black, inner sep=2pt] (n4)  at (2,4) {};
+          
+          \node[circle, fill=black, inner sep=2pt] (n5)  at (4,0) {};
+          \node[circle, fill=black, inner sep=2pt] (n6)  at (4,2) {};
+          \node[circle, fill=black, inner sep=2pt] (n7)  at (4,4) {};
+
+          \node[circle, fill=black, inner sep=2pt] (n8)  at (6,0) {};
+          \node[circle, fill=black, inner sep=2pt] (n9)  at (6,2) {};
+          \node[circle, fill=black, inner sep=2pt] (n10) at (6,4) {};
+          
+          \node[circle, fill=black, inner sep=2pt] (n11) at (8,2) {};
+          
+          \draw (n1) -- (n4) node[midway, above] {2};
+          \draw (n1) -- (n3) node[midway, above] {7};
+          \draw (n1) -- (n2) node[midway, below] {3};
+
+          \draw (n3) -- (n4) node[midway, left] {4};
+          \draw (n2) -- (n3) node[midway, left] {1};
+                
+          \draw (n4) -- (n7) node[midway, above] {8};
+          \draw (n4) -- (n6) node[midway, above] {9};
+          \draw (n3) -- (n6) node[midway, above] {1};
+          \draw (n3) -- (n5) node[midway, above] {2};
+          \draw (n2) -- (n5) node[midway, below left] {5};
+          
+          \draw (n6) -- (n7) node[midway, left] {3};
+          \draw (n5) -- (n6) node[midway, left] {2};
+
+          \draw (n7) -- (n10) node[midway, above] {3};
+          \draw (n7) -- (n9)  node[midway, above] {2};
+          \draw (n6) -- (n9)  node[midway, above] {4};
+          \draw (n6) -- (n8)  node[midway, above] {7};
+          \draw (n5) -- (n8)  node[midway, below left] {5};
+
+          \draw (n9) -- (n10) node[midway, left] {5};
+          \draw (n8) -- (n9)  node[midway, left] {4};
+
+          \draw (n10) -- (n11) node[midway, above] {2};
+          \draw (n9)  -- (n11) node[midway, above] {3};
+          \draw (n8)  -- (n11) node[midway, below] {3};
+        \end{tikzpicture}
+        \end{center}
+
+        Gierigheidsalgoritme gebruiken: bogen toevoegen in volgorde van gewicht. Bij gelijk gewicht, willekeurig kiezen.
+        \begin{center}
+        \begin{tikzpicture}
+          \node[circle, fill=black, inner sep=2pt] (n1)  at (0,2) {};
+
+          \node[circle, fill=black, inner sep=2pt] (n2)  at (2,0) {};
+          \node[circle, fill=black, inner sep=2pt] (n3)  at (2,2) {};
+          \node[circle, fill=black, inner sep=2pt] (n4)  at (2,4) {};
+          
+          \node[circle, fill=black, inner sep=2pt] (n5)  at (4,0) {};
+          \node[circle, fill=black, inner sep=2pt] (n6)  at (4,2) {};
+          \node[circle, fill=black, inner sep=2pt] (n7)  at (4,4) {};
+
+          \node[circle, fill=black, inner sep=2pt] (n8)  at (6,0) {};
+          \node[circle, fill=black, inner sep=2pt] (n9)  at (6,2) {};
+          \node[circle, fill=black, inner sep=2pt] (n10) at (6,4) {};
+          
+          \node[circle, fill=black, inner sep=2pt] (n11) at (8,2) {};
+          
+          \draw (n1) -- (n4) node[midway, above] {2} node[midway, right] {\textcolor{blue}{6}};
+          % \draw (n1) -- (n3) node[midway, above] {7};
+          \draw (n1) -- (n2) node[midway, below] {3} node[midway, right] {\textcolor{blue}{7}};
+
+          % \draw (n3) -- (n4) node[midway, left] {4};
+          \draw (n2) -- (n3) node[midway, left] {1} node[midway, right] {\textcolor{blue}{1}};
+                
+          % \draw (n4) -- (n7) node[midway, above] {8};
+          % \draw (n4) -- (n6) node[midway, above] {9};
+          \draw (n3) -- (n6) node[midway, above] {1} node[midway, below] {\textcolor{blue}{2}};
+          % \draw[red, dashed] (n3) -- (n5) node[midway, above] {2};
+          % \draw (n2) -- (n5) node[midway, below left] {5};
+          
+          \draw (n6) -- (n7) node[midway, left] {3} node[midway, right] {\textcolor{blue}{9}};
+          \draw (n5) -- (n6) node[midway, left] {2} node[midway, right] {\textcolor{blue}{5}};
+
+          \draw (n7) -- (n10) node[midway, above] {3} node[midway, below] {\textcolor{blue}{8}};
+          \draw (n7) -- (n9)  node[midway, above] {2} node[midway, right] {\textcolor{blue}{4}};
+          % \draw (n6) -- (n9)  node[midway, above] {4};
+          % \draw (n6) -- (n8)  node[midway, above] {7};
+          % \draw (n5) -- (n8)  node[midway, below left] {5};
+
+          % \draw (n9) -- (n10) node[midway, left] {5};
+          % \draw (n8) -- (n9)  node[midway, left] {4};
+
+          \draw (n10) -- (n11) node[midway, above] {2} node[midway, below] {\textcolor{blue}{3}};
+          % \draw (n9)  -- (n11) node[midway, above] {3};
+          \draw (n8)  -- (n11) node[midway, below] {3} node[midway, below] {\textcolor{blue}{10}};
+        \end{tikzpicture}
+        \end{center}
+
+        Na het toevoegen van de 10\textsuperscript{de} boog hebben we een opspannende boom en mogen 
+        we het algoritme stoppen. Het minimale gewicht is 22.
+\end{enumerate}
 
 \end{document}
