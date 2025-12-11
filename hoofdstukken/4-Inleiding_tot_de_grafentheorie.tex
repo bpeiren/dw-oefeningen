@@ -464,7 +464,62 @@ Deze graf mag ook nog andere bogen bevatten.
         \end{center}
 \end{enumerate}
 
+\begin{center}
+\begin{tikzpicture}
+  % First graph - K_{2,2}
+  \begin{scope}
+    \node[circle, fill=blue!30, inner sep=2pt] (a1) at (0,1) {};
+    \node[circle, fill=red!30 , inner sep=2pt] (a2) at (0,0) {};
+    \node[circle, fill=red!30,  inner sep=2pt] (b1) at (1,1) {};
+    \node[circle, fill=blue!30, inner sep=2pt] (b2) at (1,0) {};
+    
+    \draw (a1) -- (b1) -- (b2) -- (a2) -- (a1);
+  \end{scope}
+
+  % Second graph - pentagon-like structure
+  \begin{scope}[xshift=5cm]
+    \node[circle, fill=black,   inner sep=2pt] (n1) at (0,0.5) {};
+    \node[circle, fill=black,   inner sep=2pt] (n2) at (1,1) {};
+    \node[circle, fill=black,   inner sep=2pt] (n3) at (1,0) {};
+    \node[circle, fill=red!30,  inner sep=2pt] (n4) at (2,1) {};
+    \node[circle, fill=blue!30, inner sep=2pt] (n5) at (2,0) {};
+    \node[circle, fill=blue!30, inner sep=2pt] (n6) at (3,0.5) {};
+    
+    \draw (n1) -- (n2);
+    \draw (n1) -- (n3);
+
+    \draw (n2) -- (n3);
+    \draw (n2) -- (n4);
+    \draw (n3) -- (n5);
+
+    \draw (n4) -- (n5);
+    \draw (n4) -- (n6);
+    \draw (n5) -- (n6);
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+In een bipartiete graf kan je telkens van kleur wisselen. Rechts is er een probleem
+omdat er een lus van oneven lengte is.
+
+\begin{enumerate}[start=13]
+  % Oefening 13
+  \item Elke top stelt een kubus voor. Het is een bipartiete graf aangezien we buren alternerend
+        kunnen inkleuren. In totaal zijn er 27 toppen. We zoeken dus een 
+        Hamiltonpad van lengte 26 (aantal bogen). In een bipartiete graf eindigt een pad van 
+        even lengte altijd in dezelfde kleur (rood \(\to\) groen \(\to\) rood).
+
+        De muis kan dus niet in het midden van de kubus eindigen.
+        \begin{center}
+          \includegraphics[width=0.6\textwidth]{../images/4-13.png}
+        \end{center}
+\end{enumerate}
+
+
+
+
 \begin{enumerate}[start=15]
+  % Oefening 15
   \item Waar of onwaar?
         \begin{enumerate}
           \item Als een graaf een Eulercyclus heeft, dan heeft hij een even aantal bogen.
@@ -1278,6 +1333,80 @@ componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
             \end{scope}
           \end{tikzpicture}
         \end{figure}
+  
+  % Oefening 35
+  \item Zoek alle maximale koppelingen van de Petersengraaf. Hoe groot is
+        een maximumkoppeling van deze graf?
+
+        \begin{center}
+        \begin{tikzpicture}[scale=2]
+          \begin{scope}
+            % Outer pentagon vertices
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (outer\i) at ({90+\i*72}:1) {};
+            }
+            
+            % Inner pentagon vertices (star pattern)
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (inner\i) at ({90+\i*72}:0.5) {};
+            }
+            
+            % Outer pentagon edges
+            \foreach \i in {0,...,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+1,5))}
+              \draw (outer\i) -- (outer\next);
+            }
+            
+            % Inner star edges (each vertex connects to vertex +2 mod 5)
+            \foreach \i in {0,...,4} {
+              \pgfmathsetmacro{\next}{int(mod(\i+2,5))}
+              \draw (inner\i) -- (inner\next);
+            }
+            
+            % Spokes connecting outer to inner
+            \foreach \i in {0,...,4} {
+              \draw (outer\i) -- (inner\i);
+            }
+          \end{scope}
+          
+          \begin{scope}[xshift=2.5cm]
+            % Outer pentagon vertices
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (outer\i) at ({90+\i*72}:1) {};
+            }
+            
+            % Inner pentagon vertices (star pattern)
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (inner\i) at ({90+\i*72}:0.5) {};
+            }
+            
+
+            \draw[thick] (outer0) -- (outer1);
+            \draw[thick] (outer3) -- (outer4);
+            \draw[thick] (outer2) -- (inner2);
+            \draw[thick] (inner0) -- (inner3);
+            \draw[thick] (inner1) -- (inner4);
+          \end{scope}
+          
+          \begin{scope}[xshift=5cm]
+            % Outer pentagon vertices
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (outer\i) at ({90+\i*72}:1) {};
+            }
+            
+            % Inner pentagon vertices (star pattern)
+            \foreach \i in {0,...,4} {
+              \node[circle, fill=black, inner sep=2pt] (inner\i) at ({90+\i*72}:0.5) {};
+            }
+            
+            \draw[thick] (outer0) -- (inner0);
+            \draw[thick] (outer2) -- (outer3);
+            \draw[thick] (inner1) -- (inner4);
+          \end{scope}
+        \end{tikzpicture}
+        \end{center}
+        
+        De maximumgrootte is 5.
 \end{enumerate}
 
 \begin{tcolorbox}[title=Ter herinnering]
@@ -1289,6 +1418,7 @@ componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
 \end{tcolorbox}
 
 \begin{enumerate}[start=37]
+  % Oefening 37
   \item Aan een toernooi doen \(2n\) ploegen mee. Er zijn al twee ronden
         gespeeld. Toon aan dat we de ploegen nog altijd in twee groepen van
         \(n\) ploegen kunnen verdelen, zodat ploegen van eenzelfde groep nog niet
@@ -1335,10 +1465,88 @@ componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
 
         We kunnen de toppen dus alternerend aan een groep toevoegen. Deze ploegen hebben
         dan niet tegen elkaar gespeeld.
+  
+  % Oefening 38
+  \item Zij \((X \cup Y, \sim)\) een bipartiete graaf waarin de graad van elke top in
+        \(X\) minstens zo groot is als de graad van elke top in \(Y\). Toon aan dat
+        er een toewijzing bestaat van \(X\) in \(Y\).
+
+        \(\deg(x) \geq \deg(y) \qquad \forall x \in X, y \in Y \)
+
+        \(m = \min \deg(x), x \in X \qquad\qquad M = \max \deg(y), y \in Y\)
+
+        \(m \geq M\)
+
+        \(W \subset X \) willekeurig
+
+        \textbf{Te bewijzen:} \(|H(W)| \geq |W|\)
+
+        \textbf{Bewijs:}
+        \begin{align*}
+          \begin{array}{ccccccc}
+            \displaystyle
+            \sum_{x \in W} m & \leq & \displaystyle \sum_{x \in W} \deg(x) & \leq & \displaystyle \sum_{y \in H(W)} \deg (j) & \leq & \displaystyle \sum_{y \in H(W)} M \\
+            \|               &      &                        &                    &                            &      &  \|       \\
+            m |W|            &      &                        &                   &                            &      & M |H(W)| \\
+          \end{array}
+        \end{align*}
+
+        \(\Rightarrow m |W| \leq M |H(W)|\)
+        \(\Rightarrow |W| \leq \frac{M}{m} |H(W)| \leq 1 \cdot |H(W)| = |H(W)|\)
+\end{enumerate}
+
+\begin{tcolorbox}[title=Ter herinnering]
+  \((X \cup Y, \sim)\) is een bipartiete graf. Toppen van \(X\) zijn niet met elkaar
+  verbonden. Toppen van \(Y\) zijn niet met elkaar verbonden. \quad \(W \subset X\).
+
+  Een toewijzing van \(W\) is een koppeling die \(W\) verzadigt.
+  \\[1em]
+  \textbf{Hall}: er bestaat een toewijzing van \(W\) als en slechts als 
+  \[ \forall W' \subset W: |H(W')| \geq |W'|\]
+
+  \(H(W')\) zijn de buren van \(W'\)
+\end{tcolorbox}
+
+\begin{enumerate}[start=45]
+  % Oefening 45
+  \item Fritz moet jobs toewijzen aan jobstudenten. Hij heeft 25 kandidaten
+        en 25 jobs die moeten ingevuld worden. Elke student is voor minstens
+        4 jobs geschikt, maar elke job kan door ten hoogste 4 studenten uitgevoerd
+        worden. Kan Fritz elke student een job geven waarvoor hij geschikt is? Leg uit.
+
+        \((S \cup J, \sim)\) \qquad \(W \subset S\) willekeurig
+
+        \textbf{Te bewijzen:} \(|H(W)| \geq |W|\)
+
+        \textbf{Bewijs:}
+        \begin{align*}
+          \begin{array}{ccccccc}
+            \displaystyle
+            \sum_{s \in W} 4 & \leq & \displaystyle \sum_{s \in W} \deg(s) & \stackrel{?}{\leq} & \displaystyle \sum_{j \in H(W)} \deg (j) & \leq & \displaystyle \sum_{j \in H(W)} 4 \\
+            \|               &      &                        &                    &                            &      &  \|       \\
+            4 |W|            &      &                        &                   &                            &      & 4 |H(W)| \\
+            \sum_{s \in W} 4 & \leq & \displaystyle \sum_{s \in W} \deg(s) & \stackrel{!}{\leq} & \displaystyle \sum_{j \in H(W)} \deg (j) & \leq & \displaystyle \sum_{j \in H(W)} 4 \\
+          \end{array}
+        \end{align*}
+
+        \( \sum_{s \in W} \deg(s)\): gaat uit \(S\) \textit{vertrekkende} bogen tellen.
+        Aangezien er tussen toppen uit \(S\) onderling geen bogen gaan, worden deze bogen
+        dus niet dubbel geteld.
+
+        \(\sum_{j \in H(W)} \deg (j)\): telt de uit \(H(W)\) vertrekkende bogen.
+
+        Elke boog die vertrekt uit \(W\), komt toe in \(H(W)\), dus \( \sum_{s \in W} \deg(s) \leq \sum_{j \in H(W)} \deg (j)\)
+
+        \(\Rightarrow 4 |W| \leq 4 |H(W)|\) \\
+        \(\Rightarrow |W| \leq |H(W)|\)
+
+        De voorwaarde van de stelling van Hall is bewezen, dus we mogen er van uit gaan 
+        dat er een toewijzing bestaat.
 
 \end{enumerate}
 
 \begin{enumerate}[start=56]
+  % Oefening 56
   \item Bepaal een opspannende boom van minimaal gewicht voor onder-
         staande graaf. Hoeveel opspannende bomen heeft deze graf?
 
@@ -1526,5 +1734,6 @@ componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
         Na het toevoegen van de 10\textsuperscript{de} boog hebben we een opspannende boom en mogen 
         we het algoritme stoppen. Het minimale gewicht is 22.
 \end{enumerate}
+
 
 \end{document}
