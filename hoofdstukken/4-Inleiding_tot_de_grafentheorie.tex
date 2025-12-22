@@ -1,4 +1,3 @@
-% !TEX root = ../dw-oefeningen.tex
 \documentclass[../dw-oefeningen.tex]{subfiles}
 \begin{document}
 \chapter{Inleiding tot de grafentheorie}
@@ -8,7 +7,7 @@
 
 \begin{enumerate}
   \item Professor McBrain en zijn echtgenote April geven een feestje waar
-        nog vier andere koppels op uitgenodigd zijn. Sommige mensen schudden 
+        nog vier andere koppels op uit genodigd zijn. Sommige mensen schudden 
         elkaar de hand, maar uiteraard niet hun eigen partner. Op het
         eind van het feestje vraagt McBrain aan alle gasten en aan zijn vrouw
         aan hoeveel mensen ze een hand hebben gegeven, en hij krijgt negen
@@ -1545,10 +1544,443 @@ componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
 
 \end{enumerate}
 
+\begin{tcolorbox}[title=Methode 1 om planaire graffen te herkennen]
+  De \(K_5\) en \(K_{3,3}\) graffen:
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.2, every node/.style={circle, fill=black, inner sep=1.5pt}]
+      \begin{scope}
+        \node[draw=none,fill=none] at (0,-0.5) {$K_5$};
+
+        \node (c1) at (0,2) {};
+        \node (c2) at (-1,1.25) {};
+        \node (c3) at ( 1,1.25) {};
+        \node (c4) at (-0.60, 0) {};
+        \node (c5) at ( 0.60, 0) {};
+        
+        \foreach \i in {1,...,5} {
+          \foreach \j in {1,...,5} {
+            \ifnum\i<\j
+              \draw (c\i)--(c\j);
+            \fi
+          }
+        }
+      \end{scope}
+
+      \begin{scope}[xshift=4.5cm,yshift=1cm]
+        \node[draw=none,fill=none] at (0,0) {$K_{3,3}$};
+
+        \foreach \i in {1,2,3} {
+          \node (a\i) at (0,2-1.2*\i) {};
+          \node (b\i) at (2,2-1.2*\i) {};
+        }
+        \foreach \i in {1,2,3} {
+          \foreach \j in {1,2,3} {
+            \draw (a\i)--(b\j);
+          }
+        }
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+  \(\deg K_5 = 4 \qquad \deg K_{3,3} = 3\)
+
+  Wat is de graad van de toppen? Zou er een \(K_5\) of een \(K_{3,3}\) te vinden kunnen zijn?
+\end{tcolorbox}
+
+\begin{enumerate}[start=50]
+  \item Bepaal welke van de volgende grafen planair is. Teken de planaire
+        grafen zonder dat de bogen snijden. Zoek in de grafen die niet planair
+        zijn een deelgraaf die boogequivalent is met \(K_5\) of \(K_{3,3}\).
+
+        \begin{enumerate}[label=\arabic*]
+          \item niet-planair: we kunnen de toppen van graad 2 vervangen door een boog. Deze wordt dan \(K_{3,3}\)
+          \item planair
+          \item de toppen hebben graad 3, zoals bij \(K_{3,3}\). \(K_{5}\) heeft toppen van graad 4 en kunnen we
+                dus niet krijgen door boogequivalentieoperaties.
+
+                Als we één top met bijhorende bogen weglaten, wordt de graad van de aangrenzende toppen 2 en 
+                houden we dus maar 4 toppen van graad 3 over. \(K_{3,3}\) heeft 6 toppen van graad 3.
+
+                Als we één boog weglaten, krijgen we 2 toppen van graad 2. Als we vervolgens deze weglaten, 
+                houden we \(K_{3,3}\) over.
+          \item planair
+          \item planair
+          \item Deze top heeft 5 toppen met graad minstens 4. Hier vinden we waarschijnlijk een \(_5\).
+        \end{enumerate}
+
+        \begin{center}
+          \begin{tikzpicture}[scale=1.1, every node/.style={circle, fill=black, inner sep=1.5pt}]
+
+            \begin{scope}
+              \node[draw, rectangle, rounded corners=2pt, minimum width=0.5cm, minimum height=0.5cm, fill=white] at (-0.5,2) {1};
+              \node (a1)  at (0, 0) {};
+              \node (a2)  at (0, 2) {};
+              \node (a3)  at (2, 2) {};
+              \node (a4)  at (2, 0) {};
+              \draw (a1)  -- (a2) -- (a3) -- (a4) -- (a1);
+              
+              \node (a5)  at (0, 1.25) {};
+              \node (a6)  at (2, 1.50) {};
+              \draw (a5)  -- (a6);
+              
+              \node (a7)  at (0.35, 2) {};
+              \node (a8)  at (1.80, 0) {};
+              \draw (a7)  -- (a8);
+              
+              \node (a9)  at (1.7, 2) {};
+              \node (a10) at (0.8, 0) {};
+              \draw (a9) -- (a10);
+            \end{scope}
+            
+            \begin{scope}[yshift=-3cm]
+              \node[draw=none, fill=none, inner sep=0pt] at (-0.5,2) {\(K_{3,3}\)};
+              \node[fill=gray] (a1)  at (0, 0) {};
+              \node[fill=gray] (a2)  at (0, 2) {};
+              \node[fill=gray] (a3)  at (2, 2) {};
+              \node[fill=gray] (a4)  at (2, 0) {};
+              \draw[dashed] (a1)  -- (a2) -- (a3) -- (a4) -- (a1);
+              
+              \node[fill=red] (a5)  at (0, 1.25) {};
+              \node[fill=blue] (a6)  at (2, 1.50) {};
+              
+              \node[fill=blue] (a7)  at (0.35, 2) {};
+              \node[fill=red] (a8)  at (1.80, 0) {};
+              \draw (a5)  -- (a6);
+              \draw (a7)  -- (a8);
+              
+              \node[fill=red] (a9)  at (1.7, 2) {};
+              \node[fill=blue] (a10) at (0.8, 0) {};
+              \draw (a7) -- (a9);
+              \draw (a9) -- (a10);
+              \draw (a8) -- (a10);
+
+              \draw[thick] (a5)  -- (a7);
+              \draw[thick] (a9)  -- (a6);
+              \draw[thick] (a6)  -- (a8);
+              \draw[thick] (a5)  -- (a10);
+            \end{scope}
+
+            \begin{scope}[xshift=4.5cm]
+              \node[draw, rectangle, rounded corners=2pt, minimum width=0.5cm, minimum height=0.5cm, fill=white] at (-1,2) {2};
+              \node[label=below:$a$ ] (b1)  at ( 0   , 0) {};
+              \node[label=left :$c'$] (b2)  at (-1. , 0.5) {};
+              \node[label=right:$b'$] (b3)  at ( 1. , 0.5) {};
+              \node[label=left :$b$ ] (b4)  at (-1., 1.50) {};
+              \node[label=right:$c$ ] (b5)  at ( 1., 1.50) {};
+              \node[label=above:$a'$] (b6)  at ( 0   , 2) {};
+
+              \draw (b1)  -- (b4);
+              \draw (b1)  -- (b5);
+              \draw (b1)  -- (b6);
+
+              \draw (b2)  -- (b3);
+              \draw (b2)  -- (b5);
+              \draw (b2)  -- (b6);
+
+              \draw (b3)  -- (b4);
+              \draw (b3)  -- (b6);
+
+              \draw (b4)  -- (b5);
+            \end{scope}
+
+            \begin{scope}[xshift=4.5cm,yshift=-3cm]
+              \node[label=below left:$a$ ] (b1)  at ( 0  , 1) {};
+              \node[label=right:$c'$] (b2)  at ( 1  , 0) {};
+              \node[label=left :$b'$] (b3)  at (-1  , 0) {};
+              \node[label=left :$b$ ] (b4)  at (-1  , 1.50) {};
+              \node[label=right:$c$ ] (b5)  at ( 1  , 1.50) {};
+              \node[label=above right:$a'$] (b6)  at ( 0 , 0.50) {};
+
+              \draw (b1)  -- (b4);
+              \draw (b1)  -- (b5);
+              \draw (b1)  -- (b6);
+
+              \draw (b2)  -- (b3);
+              \draw (b2)  -- (b5);
+              \draw (b2)  -- (b6);
+
+              \draw (b3)  -- (b4);
+              \draw (b3)  -- (b6);
+
+              \draw (b4)  -- (b5);
+            \end{scope}
+
+            \begin{scope}[xshift=8cm,yshift=1cm]
+              \node[draw, rectangle, rounded corners=2pt, minimum width=0.5cm, minimum height=0.5cm, fill=white] at (-1,1) {3};
+              \draw (0,0) circle [radius=0.5cm];
+              \draw (0,0) circle [radius=1cm];
+
+              \node (c1)  at (-0.5, 0) {};
+              \node (c2)  at ( 0  , 0.5) {};
+              \node (c3)  at ( 0.5 , 0) {};
+              \node (c4)  at ( 0. ,-0.5) {};
+
+              \node (c5)  at ( -1, 0) {};
+              \node (c6)  at ( 0   , 1) {};
+              \node (c7)  at ( 1   , 0) {};
+              \node (c8)  at ( 0   , -1) {};
+
+              \draw (c2)  -- (c6);
+              \draw (c3)  -- (c7);
+              \draw (c1)  .. controls(-0.5, -0.5) .. (c8);
+              \draw (c4)  .. controls(-0.5, -0.5) .. (c5);
+            \end{scope}
+
+            \begin{scope}[xshift=9.5cm,yshift=-0.5cm]
+              % \draw (0,0) circle [radius=0.5cm];
+              \draw (0,0) circle [radius=1cm];
+              
+              \node (c1)  at (-0.5, 0) {};
+              \node (c2)  at ( 0  , 0.5) {};
+              \node (c3)  at ( 0.5 , 0) {};
+              \node (c4)  at ( 0. ,-0.5) {};
+              
+              \node (c5)  at ( -1, 0) {};
+              \node (c6)  at ( 0   , 1) {};
+              \node (c7)  at ( 1   , 0) {};
+              \node (c8)  at ( 0   , -1) {};
+
+              \draw (c4) arc[start angle=-90, end angle=180, radius=0.5cm];
+              \draw[dashed] (c1) arc[start angle=-180, end angle=-90, radius=0.5cm];
+
+              \draw (c2)  -- (c6);
+              \draw (c3)  -- (c7);
+              \draw (c1)  .. controls(-0.5, -0.5) .. (c8);
+              \draw (c4)  .. controls(-0.5, -0.5) .. (c5);
+            \end{scope}
+
+            \begin{scope}[xshift=8cm,yshift=-2cm]
+              \node[draw=none, fill=none, inner sep=0pt] at (-1,1) {\(K_{3,3}\)};
+              % \draw (0,0) circle [radius=0.5cm];
+              \draw (0,0) circle [radius=1cm];
+              
+              \node[draw=none, fill=none]  (c1)  at (-0.5, 0) {};
+              \node[fill=blue] (c2)  at ( 0  , 0.5) {};
+              \node[fill=red]  (c3)  at ( 0.5 , 0) {};
+              \node[draw=none, fill=none] (c4)  at ( 0. ,-0.5) {};
+              
+              \node[fill=blue]  (c5)  at ( -1, 0) {};
+              \node[fill=red] (c6)  at ( 0   , 1) {};
+              \node[fill=blue]  (c7)  at ( 1   , 0) {};
+              \node[fill=red] (c8)  at ( 0   , -1) {};
+
+              \draw (c4) arc[start angle=-90, end angle=180, radius=0.5cm];
+              \draw[dashed] (c1) arc[start angle=-180, end angle=-90, radius=0.5cm];
+
+              \draw (c2)  -- (c6);
+              \draw (c3)  -- (c7);
+              \draw (c1)  .. controls(-0.5, -0.5) .. (c8);
+              \draw (c4)  .. controls(-0.5, -0.5) .. (c5);
+            \end{scope}
+
+            \begin{scope}[xshift=1cm,yshift=-6cm]
+              \node[draw, rectangle, rounded corners=2pt, minimum width=0.5cm, minimum height=0.5cm, fill=white] at (-1.5,2) {4};
+              \node (d1)  at ( 0   , 0) {};
+              \node (d2)  at (-1. , 0.5) {};
+              \node (d3)  at ( 1. , 0.5) {};
+              \node (d4)  at (-1., 1.50) {};
+              \node (d5)  at ( 1., 1.50) {};
+              \node (d6)  at ( 0   , 2) {};
+
+              \draw (d1)  -- (d2);
+              \draw (d1)  -- (d3);
+              \draw (d1)  -- (d6);
+
+              \draw (d2)  -- (d3);
+              \draw (d2)  -- (d4);
+              \draw (d2)  -- (d5);
+
+              \draw (d3)  -- (d5);
+              \draw (d3)  -- (d6);
+
+              \draw (d4)  -- (d5);
+              \draw (d4)  -- (d6);
+
+              \draw (d5)  -- (d6);
+            \end{scope}
+
+            \begin{scope}[xshift=1cm,yshift=-9cm]
+              \node (d1)  at ( 0   , 0) {};
+              \node (d2)  at (-1. , 0.5) {};
+              \node (d3)  at ( 1. , 0.5) {};
+              \node (d4)  at (-1., 1.50) {};
+              \node (d5)  at ( 1., 1.50) {};
+              \node (d6)  at ( 0   , 2) {};
+
+              \draw (d1)  -- (d2);
+              \draw (d1)  -- (d3);
+              \draw (d1) .. controls (-2,0.5) and (-2,1.5) .. (d6);
+
+              \draw (d2)  -- (d3);
+              \draw (d2)  -- (d4);
+              \draw (d2)  -- (d5);
+
+              \draw (d3)  -- (d5);
+              \draw (d3)  .. controls (2, 2) .. (d6);
+
+              \draw (d4)  -- (d5);
+              \draw (d4)  -- (d6);
+
+              \draw (d5)  -- (d6);
+            \end{scope}
+
+            \begin{scope}[xshift=3.5cm,yshift=-6cm]
+              \node[draw, rectangle, rounded corners=2pt, minimum width=0.5cm, minimum height=0.5cm, fill=white] at (0,2) {5};
+              \node (e1)  at ( 0   , 0) {};
+              \node (e2)  at ( 0.25, 0) {};
+              \node (e3)  at ( 0.75, 0) {};
+              \node (e4)  at ( 1.25, 0) {};
+              \node (e5)  at ( 1.75, 0) {};
+              \node (e6)  at ( 2   , 0) {};
+
+              \node (e7)  at ( 0.25, 2) {};
+              \node (e8)  at ( 1.75, 2) {};
+
+              \draw (e1)  -- (e2) -- (e3) -- (e4) -- (e5) -- (e6);
+              \draw (e7)  -- (e1);
+              \draw (e7)  -- (e2);
+              \draw (e7)  -- (e3);
+              \draw (e7)  -- (e4);
+              \draw (e7)  -- (e5);
+              \draw (e7)  -- (e6);
+              \draw (e8)  -- (e1);
+              \draw (e8)  -- (e2);
+              \draw (e8)  -- (e3);
+              \draw (e8)  -- (e4);
+              \draw (e8)  -- (e5);
+              \draw (e8)  -- (e6);
+              \draw (e7)  -- (e8);
+            \end{scope}
+
+            \begin{scope}[xshift=3.5cm,yshift=-9cm] 
+              \node (e1)  at ( 0   , 0) {};
+              \node (e2)  at ( 0.25, 0) {};
+              \node (e3)  at ( 0.75, 0) {};
+              \node (e4)  at ( 1.25, 0) {};
+              \node (e5)  at ( 1.75, 0) {};
+              \node (e6)  at ( 2   , 0) {};
+
+              \node (e7)  at ( 0.25, -2) {};
+              \node (e8)  at ( 1.75,  2) {};
+
+              \draw (e1)  -- (e2) -- (e3) -- (e4) -- (e5) -- (e6);
+              \draw (e7)  -- (e1);
+              \draw (e7)  -- (e2);
+              \draw (e7)  -- (e3);
+              \draw (e7)  -- (e4);
+              \draw (e7)  -- (e5);
+              \draw (e7)  -- (e6);
+              \draw (e8)  -- (e1);
+              \draw (e8)  -- (e2);
+              \draw (e8)  -- (e3);
+              \draw (e8)  -- (e4);
+              \draw (e8)  -- (e5);
+              \draw (e8)  -- (e6);
+              \draw (e7)  .. controls(3, 0) .. (e8);
+            \end{scope}
+
+            \begin{scope}[xshift=8cm,yshift=-6cm]
+              \node[draw, rectangle, rounded corners=2pt, minimum width=0.5cm, minimum height=0.5cm, fill=white] at (-0.5,2) {6};
+              \node (f1)  at ( 0    ,1.50) {};
+              \node (f2)  at ( 1   , 1.25) {};
+              \node (f3)  at ( 0   , 0.50) {};
+              \node (f4)  at ( 1.50, 0.25) {};
+              \node (f5)  at ( 1.50, 2) {};
+              \node (f6)  at ( 2   , 1) {};
+
+              \node (f7)  at ( 0.25, 1.80) {};
+              \node (f8)  at ( 0.25, 0) {};
+              \node (f9)  at ( 1   , 0.70) {};
+
+              \draw (f1) -- (f2);
+              \draw (f1) -- (f3);
+              \draw (f1) -- (f4);
+              \draw (f1) .. controls (-0.40, -0.20) .. (f4);
+              \draw (f1) -- (f5);
+              
+              \draw (f2) -- (f3);
+              \draw (f2) -- (f4);
+              \draw (f2) -- (f5);
+
+              \draw (f3) .. controls (-0.50, 1.75) .. (f5);
+              \draw (f3) -- (f4);
+
+              \draw (f4) -- (f5);
+              \draw (f4) -- (f6);
+
+              \draw (f5) -- (f6);
+            \end{scope}
+
+            \begin{scope}[xshift=8cm,yshift=-9cm]
+              \node (f1)  at ( 0    ,1.50) {};
+              \node (f2)  at ( 1   , 1.25) {};
+              \node (f3)  at ( 0   , 0.50) {};
+              \node (f4)  at ( 1.50, 0.25) {};
+              \node (f5)  at ( 1.50, 2) {};
+              \node[fill=gray] (f6)  at ( 2   , 1) {};
+
+              \node (f7)  at ( 0.25, 1.80) {};
+              \node[fill=gray] (f8)  at ( 0.25, 0) {};
+              \node (f9)  at ( 1   , 0.70) {};
+
+              \draw (f1) -- (f2);
+              \draw (f1) -- (f3);
+              \draw (f1) -- (f4);
+              \draw[dashed] (f1) .. controls (-0.40, -0.20) .. (f4);
+              \draw (f1) -- (f5);
+              
+              \draw (f2) -- (f3);
+              \draw (f2) -- (f4);
+              \draw (f2) -- (f5);
+
+              \draw (f3) .. controls (-0.50, 1.75) .. (f5);
+              \draw (f3) -- (f4);
+
+              \draw (f4) -- (f5);
+              \draw[dashed] (f4) -- (f6);
+
+              \draw[dashed] (f5) -- (f6);
+            \end{scope}
+
+            \begin{scope}[xshift=8cm,yshift=-9cm]
+              \node[draw=none, fill=none, inner sep=0pt] at (-0.5,2) {\(K_5\)};
+              \node (f1)  at ( 0    ,1.50) {};
+              \node (f2)  at ( 1   , 1.25) {};
+              \node (f3)  at ( 0   , 0.50) {};
+              \node (f4)  at ( 1.50, 0.25) {};
+              \node (f5)  at ( 1.50, 2) {};
+              \node[fill=gray] (f6)  at ( 2   , 1) {};
+
+              \node[fill=gray] (f7)  at ( 0.25, 1.80) {};
+              \node[fill=gray] (f8)  at ( 0.25, 0) {};
+              \node[fill=gray] (f9)  at ( 1   , 0.70) {};
+
+              \draw (f1) -- (f2);
+              \draw (f1) -- (f3);
+              \draw (f1) -- (f4);
+              \draw[dashed] (f1) .. controls (-0.40, -0.20) .. (f4);
+              \draw (f1) -- (f5);
+              
+              \draw (f2) -- (f3);
+              \draw (f2) -- (f4);
+              \draw (f2) -- (f5);
+
+              \draw (f3) .. controls (-0.50, 1.75) .. (f5);
+              \draw (f3) -- (f4);
+
+              \draw (f4) -- (f5);
+              \draw[dashed] (f4) -- (f6);
+
+              \draw[dashed] (f5) -- (f6);
+            \end{scope}
+          \end{tikzpicture}
+        \end{center}
+\end{enumerate}
+
+
 \begin{enumerate}[start=56]
   % Oefening 56
-  \item Bepaal een opspannende boom van minimaal gewicht voor onder-
-        staande graaf. Hoeveel opspannende bomen heeft deze graf?
+  \item Bepaal een opspannende boom van minimaal gewicht voor onderstaande graaf. Hoeveel opspannende bomen heeft deze graf?
 
         \begin{center}
         \begin{tikzpicture}
@@ -1727,7 +2159,7 @@ componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
 
           \draw (n10) -- (n11) node[midway, above] {2} node[midway, below] {\textcolor{blue}{3}};
           % \draw (n9)  -- (n11) node[midway, above] {3};
-          \draw (n8)  -- (n11) node[midway, below] {3} node[midway, below] {\textcolor{blue}{10}};
+          \draw (n8)  -- (n11) node[midway, below] {3} node[midway, above] {\textcolor{blue}{10}};
         \end{tikzpicture}
         \end{center}
 
@@ -1735,5 +2167,142 @@ componenten uit elkaar valt, is het geen Hamilton. Zie volgende figuur.
         we het algoritme stoppen. Het minimale gewicht is 22.
 \end{enumerate}
 
+
+\begin{tcolorbox}[title=Methode 2 om planaire graffen te herkennen]
+  Stelling van Euler:
+  \[ v - e + f = 2\]
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.1, every node/.style={circle, fill=black, inner sep=1.5pt}]
+      \node[label=below:a] (a) at (0,0) {};
+      \node[label=above:b] (b) at (0,1.5) {};
+      \node[label=above:c] (c) at (2,1.5) {};
+      \node[label=below:d] (d) at (2,0) {};
+      
+      \node[label=below:e] (e) at (0.8,0.4) {};
+      \node[label=below:f] (f) at (3  ,2) {};
+      \node[label=left :g] (g) at (1  ,1) {};
+      \node[label=below:h] (h) at (1.7,0.7) {};
+
+      \node[draw=none, fill=none] (g1) at (0.25, 0.8) {\(g_1\)};
+      \node[draw=none, fill=none] (g2) at (2.5, 0.5) {\(g_2\)};
+
+      \draw (a) -- (b) -- (c) --(d) -- (a);
+      \draw (a) -- (e);
+      \draw (c) -- (f);
+      \draw (g) -- (h);
+
+    \end{tikzpicture}
+  \end{center}
+
+  Deze planaire graf heeft 2 gebieden: binnen en buiten de rechthoek.
+
+  Op eender welke manier een planaire graf getekend wordt, als het zonder kruisende bogen is, zal het aantal afgetekende
+  gebieden (\(f\)) altijd gelijk zijn.
+
+  De rand van een gebied zijn alle bogen waar je op kan botsen. In \(g_1\) kan je botsen op \((a, b), (b, c),(c, d), (d,a)\)
+  maar ook op \((a, e)\) en \((g, h)\).
+
+  \(r_{g_1} = 6 \qquad r_{g_2} = 5\)
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{scope}
+        \node (n) at (1.5, 1) {\(\mathcal{G}\)};
+        % Outer pentagon vertices
+        \foreach \i in {0,...,4} {
+          \node[circle, fill=black, inner sep=2pt] (outer\i) at ({90+\i*72}:1) {};
+        }
+        
+        % Inner pentagon vertices (star pattern)
+        \foreach \i in {0,...,4} {
+          \node[circle, fill=black, inner sep=2pt] (inner\i) at ({90+\i*72}:0.5) {};
+        }
+        
+        % Outer pentagon edges
+        \foreach \i in {0,...,4} {
+          \pgfmathsetmacro{\next}{int(mod(\i+1,5))}
+          \draw (outer\i) -- (outer\next);
+        }
+        
+        % Inner star edges (each vertex connects to vertex +2 mod 5)
+        \foreach \i in {0,...,4} {
+          \pgfmathsetmacro{\next}{int(mod(\i+2,5))}
+          \draw (inner\i) -- (inner\next);
+        }
+        
+        % Spokes connecting outer to inner
+        \foreach \i in {0,...,4} {
+          \draw (outer\i) -- (inner\i);
+        }
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+
+  Stel uit het ongerijmde dat \(\mathcal{G}\) wel planair is.
+
+  \begin{align*}
+      v - e + f &= 2 \\
+    10 - 15 + f &= 2 \\
+              f &= 7
+  \end{align*}
+
+  We hebben cycli nodig om het ene gebied af te sluiten van het andere. In een Petersengraaf graf is 
+  de kortste cyclus \(c = 5\).
+
+  \begin{gather*}
+    35 = 7 \times 5 = \underbrace{\sum_{g \text{ gebied}} 5}_{\text{minstens 5 bogen nodig}} 
+    \leq \sum_{g \text{ gebied}} r_g
+    \leq \underbrace{2 \times 15}_{\text{een boog kan tot max 2 gebieden horen}} = 30 \\
+    35 \not\leq 30
+  \end{gather*}
+  We komen tot een contradictie, dus \(\mathcal{G}\) is niet planair.
+
+  \textbf{Let op:} het kan zijn dat er geen contradictie uit komt, ook al is de 
+                   graf niet planair!
+\end{tcolorbox}
+
+\begin{enumerate}[start=62]
+  % Oefening 62
+  \item Beschouw de gegeven graaf \(\mathcal{G}\).
+        \begin{enumerate}
+          \item Is dit een Eulergraf? Verklaar.
+          \item Toon aan dat G bipartiet is door hem over
+                te tekenen op je antwoordblad en de toppen
+                z´o te nummeren dat toppen enkel kunnen
+                adjacent zijn als hun nummers niet allebei
+                even of oneven zijn.
+          \item Vind een maximumkoppeling in G. Is dit
+                een volledige koppeling?
+          \item Wat is de lengte van de kortste cycli in G?
+          \item Is deze graaf planair? Geef een bewijs.
+        \end{enumerate}
+
+        \hrulefill
+
+        
+        \begin{enumerate}[start=5]
+          \item Het is een bipartiete graf, dus de kortste cyclus is sowieso even.
+                De kortste cyclus is van lengte 6.
+
+                Uit het ongerijmde: de graf is planair, dus:
+
+                \begin{align*}
+                    v - e + f &= 2 \\
+                  14 - 21 + f &= 2 \\
+                            f &= 9 
+                \end{align*}
+
+                Het is een drie-reguliere graf, dus \(e = \frac{3 \times 14}{2} = 21\)
+
+                
+                \begin{gather*}
+                  54 = 9 \times 6 = \underbrace{\sum_{g \text{ gebied}} 6}_{\text{minstens 6 bogen nodig}} 
+                  \leq \sum_{g \text{ gebied}} r_g
+                  \leq \underbrace{2 \times 21}_{\text{een boog kan tot max 2 gebieden horen}} = 42 \\
+                  54 \not\leq 42
+                \end{gather*}
+        \end{enumerate}
+\end{enumerate}
 
 \end{document}
